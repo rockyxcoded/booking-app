@@ -1,44 +1,41 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
-import FlightBooking from "@/Components/FlightBooking.vue";
+import HotelBooking from "@/Components/HotelBooking.vue";
 import axios from "axios";
+import { ModelListSelect } from "vue-search-select";
+import debounce from "lodash.debounce";
 import VueDatePicker from "@vuepic/vue-datepicker";
-// import "@vuepic/vue-datepicker/dist/main.css";
 
-const allFlights = ref({});
+const allHotels = ref({});
 const stepper = ref(1);
-const selectedFlight = ref({});
+const selectedHotel = ref({});
+const countries = ref([]);
 
 const form = useForm({
-    location: "",
-    destination: "",
-    departure_date: "",
-    return_date: "",
-    cabin_class: "",
+    city_id: "",
+    check_out: "",
+    check_in: "",
     adults: "",
     children: "",
-    trip_type: "round",
 });
 
-const submit = async (e) => {
-    e.preventDefault();
-    // const formData = new FormData(e.target);
-    // form.location = formData.get("location");
-    // form.destination = formData.get("destination");
-    // form.departure_date = formData.get("departure_date");
-    // form.return_date = formData.get("return_date");
-    // form.cabin_class = formData.get("cabin_class");
-    // form.adults = formData.get("adults") ?? 0;
-    // form.children = formData.get("children") ?? 0;
-    // form.trip_type = formData.get("trip_type") ?? "round";
+const hotelsAutoSuggest = debounce(async (city) => {
+    const response = await axios.post(route("hotels.suggest"), { city });
+    const result = Object.values(response.data.result.cities).map((r) => ({
+        code: r.cityid_ppn,
+        name: `${r.city} (${r.country})`,
+    }));
 
+    countries.value = result ?? [];
+}, 500);
+
+const submit = async (e) => {
     try {
         form.processing = true;
-        const response = await axios.post(route("flights.search"), form);
-        console.log({ response });
-        allFlights.value = response.data?.result;
-        $("#staticBackdrop").modal("show");
+        const response = await axios.post(route("hotels.search"), form);
+        allHotels.value = response.data;
+        $("#staticBackdrop").appendTo("body").modal("show");
     } catch (error) {
         console.log({ error });
         if (error.response.data.message) {
@@ -54,8 +51,8 @@ const submit = async (e) => {
     }
 };
 
-const selectFlight = (itinerary_data) => {
-    selectedFlight.value = itinerary_data;
+const selectHotel = (rate_data) => {
+    selectedHotel.value = rate_data;
     stepper.value++;
 };
 
@@ -67,47 +64,83 @@ onMounted(() => {});
 // defineExpose({ focus: () => input.value.focus() });
 </script>
 
+<style>
+.ui.selection.dropdown {
+    min-height: 53px;
+    border-radius: unset;
+    font-size: inherit;
+}
+.default.text {
+    color: #555555 !important;
+}
+</style>
+
 <template>
     <div class="hotels-form">
-        <form action="#" method="post">
-            <div class="hotel-input-4-23 input-s">
-                <input
-                    type="text"
-                    name="s"
-                    id="pickupdate"
+        <form @submit.prevent="submit($event)" method="POST">
+            <div class="hotel-input-2 input-b">
+                <ModelListSelect
+                    :list="countries"
+                    option-value="code"
+                    option-text="name"
+                    v-model="form.city_id"
+                    placeholder="Enter city name"
+                    @searchchange="(e) => hotelsAutoSuggest(e)"
                     class="hotel-input-first"
-                    placeholder="Pickup Date & time"
                 />
             </div>
-            <div class="hotel-input-4-23 input-s">
+
+            <!-- <div class="hotel-input-4 input-b">
+                <select id="standard1" name="standard" class="custom-select">
+                    <option value="">Select a Location</option>
+                    <option value="Us">America</option>
+                    <option value="Canda">Canada</option>
+                    <option value="london">London</option>
+                    <option value="france">Paris</option>
+                    <option value="bd">Bangladesh</option>
+                </select>
+            </div> -->
+            <div class="hotel-input-2 input-s">
+                <VueDatePicker
+                    v-model="form.check_in"
+                    placeholder="Check-In"
+                    :enable-time-picker="false"
+                    :hide-input-icon="true"
+                    class="hotel-input-first"
+                    required
+                />
+            </div>
+            <div class="hotel-input-2 input-s">
+                <VueDatePicker
+                    v-model="form.check_out"
+                    placeholder="Check-out"
+                    :enable-time-picker="false"
+                    :hide-input-icon="true"
+                    class="hotel-input-first"
+                    required
+                />
+            </div>
+            <div class="hotel-input-1 input-s">
                 <input
+                    v-model="form.children"
                     type="number"
-                    name="s"
-                    id="hours"
                     class="hotel-input-first"
-                    placeholder="Hours"
+                    placeholder="Children"
                 />
             </div>
-            <div class="hotel-input-4-23 input-s">
+            <div class="hotel-input-1 input-s">
                 <input
-                    type="text"
-                    name="s"
-                    id="pickup"
+                    v-model="form.adults"
+                    type="number"
                     class="hotel-input-first"
-                    placeholder="Pickup Location"
-                />
-            </div>
-            <div class="hotel-input-4-23 input-s">
-                <input
-                    type="text"
-                    name="s"
-                    id="location"
-                    class="hotel-input-first"
-                    placeholder="Drop Location"
+                    placeholder="Adults"
                 />
             </div>
             <div class="searc-btn-7">
-                <button type="submit">Search</button>
+                <button type="submit" :disabled="form.processing">
+                    <template v-if="form.processing"> Searching... </template>
+                    <template v-else> Search </template>
+                </button>
             </div>
         </form>
     </div>
@@ -133,9 +166,9 @@ onMounted(() => {});
                     >
                         Go back
                     </button>
-                    <h4 class="modal-title" v-if="stepper == 2">Book Flight</h4>
+                    <h4 class="modal-title" v-if="stepper == 2">Book Hotel</h4>
                     <h4 class="modal-title" v-if="stepper == 1">
-                        List of available flights
+                        List of available hotels
                     </h4>
                     <button
                         type="button"
@@ -147,171 +180,62 @@ onMounted(() => {});
                 </div>
 
                 <div class="modal-body p-4">
-                    <template v-if="allFlights.itinerary_data">
+                    <template v-if="allHotels.rate_data">
                         <div
                             class="row"
-                            v-for="(
-                                itinerary_data, index
-                            ) in allFlights.itinerary_data"
+                            v-for="(rate_data, index) in allHotels.rate_data"
                             v-if="stepper == 1"
                         >
                             <div
                                 style="border: 1px solid #dee2e6"
-                                class="mb-3 p-3 rounded col-md-8"
+                                class="mb-3 p-3 rounded col-md-12"
                             >
                                 <div
                                     class="d-flex flex-row align-items-center justify-content-between"
-                                    v-if="itinerary_data.slice_data?.slice_0"
+                                    v-if="rate_data"
+                                    style="gap: 10px"
                                 >
                                     <div class="d-flex flex-column">
                                         <img
-                                            width="50"
-                                            :src="
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.airline?.logo
-                                            "
+                                            width="200"
+                                            :src="`https:${rate_data.thumbnail}`"
                                             class="rounded"
                                         />
-                                        <p>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.airline?.name
-                                            }}
-                                        </p>
+                                        <p></p>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <h6>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.departure.datetime
-                                                    .time_12h
-                                            }}
-                                        </h6>
+                                        <h4>
+                                            {{ rate_data?.name }} ({{
+                                                rate_data.hotel_zone
+                                            }})
+                                        </h4>
                                         <div class="text-muted">
                                             {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.departure.airport
-                                                    .code
+                                                rate_data.hotel_description.slice(
+                                                    0,
+                                                    200
+                                                )
                                             }}
+                                            ...
                                         </div>
                                     </div>
-                                    <span>
-                                        <i
-                                            class="fa fa-arrow-right"
-                                            aria-hidden="true"
-                                        ></i>
-                                        <i
-                                            class="fa fa-arrow-right"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </span>
+
                                     <div class="d-flex flex-column">
-                                        <h6>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.arrival.datetime
-                                                    .time_12h
-                                            }}
-                                        </h6>
-                                        <div class="text-muted">
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.arrival.airport
-                                                    .code
-                                            }}
+                                        <div>
+                                            <div class="fw-bold">$300</div>
+                                            <button
+                                                type="button"
+                                                class="btn btn-primary"
+                                                @click="selectHotel(rate_data)"
+                                            >
+                                                Select
+                                                <i
+                                                    class="fa fa-arrow-right"
+                                                    aria-hidden="true"
+                                                ></i>
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div
-                                    class="d-flex flex-row align-items-center justify-content-between"
-                                    v-if="itinerary_data.slice_data?.slice_1"
-                                >
-                                    <div class="d-flex flex-column">
-                                        <img
-                                            width="50"
-                                            :src="
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.airline?.logo
-                                            "
-                                            class="rounded"
-                                        />
-                                        <p>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.airline?.name
-                                            }}
-                                        </p>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <h6>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.arrival.datetime
-                                                    .time_12h
-                                            }}
-                                        </h6>
-                                        <div class="text-muted">
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.arrival.airport
-                                                    .code
-                                            }}
-                                        </div>
-                                    </div>
-                                    <span>
-                                        <i
-                                            class="fa fa-arrow-left"
-                                            aria-hidden="true"
-                                        ></i>
-                                        <i
-                                            class="fa fa-arrow-left"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </span>
-                                    <div class="d-flex flex-column">
-                                        <h6>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.departure.datetime
-                                                    .time_12h
-                                            }}
-                                        </h6>
-                                        <div class="text-muted">
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.departure.airport
-                                                    .code
-                                            }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                style="border: 1px solid #dee2e6"
-                                class="mb-3 p-3 rounded col-md-4 d-flex flex-column justify-content-center"
-                            >
-                                <div>
-                                    <div class="fw-bold">
-                                        {{
-                                            itinerary_data?.price_details
-                                                ?.display_symbol
-                                        }}
-                                        {{
-                                            itinerary_data?.price_details
-                                                ?.display_total_fare
-                                        }}
-                                    </div>
-                                    <button
-                                        type="button"
-                                        class="btn btn-primary"
-                                        @click="selectFlight(itinerary_data)"
-                                    >
-                                        Select
-                                        <i
-                                            class="fa fa-arrow-right"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -322,12 +246,12 @@ onMounted(() => {});
                             aria-hidden="true"
                         ></span>
                         <span class="sr-only">Error:</span>
-                        No flights found
+                        No hotels found
                     </div>
-                    <FlightBooking
+                    <HotelBooking
                         @close-modal="closeModal"
                         v-if="stepper == 2"
-                        :flight="selectedFlight"
+                        :hotel="selectedHotel"
                         :form
                     />
                 </div>

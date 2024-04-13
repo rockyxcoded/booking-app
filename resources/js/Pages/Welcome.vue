@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
 import SearchWidget from "@/Components/SearchWidget.vue";
+import HeaderMenu from "@/Components/HeaderMenu.vue";
 import { onMounted } from "vue";
 
 defineProps({
@@ -701,13 +702,14 @@ body {
                     <!-- logo area start here -->
                     <div class="col-md-2">
                         <div class="logo-area">
-                            <a href="index.html"
+                            <a :href="route('welcome')"
                                 ><img src="/images/logo.png" alt="" />
                             </a>
                         </div>
                     </div>
                     <!-- logo area end here -->
                     <!-- <?php include("includes/menu.php"); ?> -->
+                    <HeaderMenu />
                 </div>
             </div>
         </div>
@@ -1776,10 +1778,320 @@ body {
     </section>
     <!--end partner section -->
 
-    <!-- <?php include("includes/footer.php"); ?> -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <!-- footer left -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-footer">
+                        <div class="footer-title">
+                            <a href="/"
+                                ><img src="images/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="footer-left">
+                            <div class="footer-logo">
+                                <p>
+                                    Zenith Travels and Tours Ltd is a leading
+                                    travel company in Lagos, Nigeria since 1998.
+                                </p>
+                            </div>
+                            <ul class="footer-contact">
+                                <li>
+                                    <img
+                                        class="map"
+                                        src="images/icon/map.png"
+                                        alt=""
+                                    />4 Shobo House, 5 Simpson Street, Lagos -
+                                    Nigeria.
+                                </li>
+                                <li>
+                                    <img
+                                        class="map"
+                                        src="images/icon/phone.png"
+                                        alt=""
+                                    />+234 802 2235 119
+                                </li>
+                                <li>
+                                    <img
+                                        class="map"
+                                        src="images/icon/phone.png"
+                                        alt=""
+                                    />+234 805 5469 754
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer left -->
+
+                <!-- footer latest news -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-footer">
+                        <div class="single-recent-post">
+                            <div class="footer-title">
+                                <h3>Holiday Destinations</h3>
+                            </div>
+                            <ul class="recent-post">
+                                <li>
+                                    <a href="parents-bonding-retreats">
+                                        <div class="post-thum">
+                                            <img
+                                                src="images/footer/pic1.png"
+                                                alt=""
+                                                class="img-rounded"
+                                            />
+                                        </div>
+                                        <div class="post-content">
+                                            <p>Parents Bonding Retreats</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="free-city-student-tours">
+                                        <div class="post-thum">
+                                            <img
+                                                src="images/footer/pic3.png"
+                                                alt=""
+                                                class="img-rounded"
+                                            />
+                                        </div>
+                                        <div class="post-content">
+                                            <p>Free City Student<br />Tours</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adventure-and-expedition-tours">
+                                        <div class="post-thum">
+                                            <img
+                                                src="images/footer/pic4.png"
+                                                alt=""
+                                                class="img-rounded"
+                                            />
+                                        </div>
+                                        <div class="post-content">
+                                            <p>
+                                                Adventure and Expedition Tours
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="educational-tours-and-school-holiday-trips"
+                                    >
+                                        <div class="post-thum">
+                                            <img
+                                                src="images/footer/pic5.png"
+                                                alt=""
+                                                class="img-rounded"
+                                            />
+                                        </div>
+                                        <div class="post-content">
+                                            <p>
+                                                Summer Educational and Family
+                                                Tours
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer latest news -->
+
+                <!-- footer destination -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-footer">
+                        <div class="footer-title">
+                            <h3>Popular Tours</h3>
+                        </div>
+                        <ul class="footer-gallery">
+                            <li>
+                                <a href="festival-tours">
+                                    <div class="image-overlay">
+                                        <img
+                                            src="images/footer/footerpic1.png"
+                                            alt=""
+                                        />
+                                        <div class="overly-city">
+                                            <span>ZET Festive Tours</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sports-tours">
+                                    <div class="image-overlay">
+                                        <img
+                                            src="images/footer/footerpic2.png"
+                                            alt=""
+                                        />
+                                        <div class="overly-city">
+                                            <span>Sport Academy Tours</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="festival-tours">
+                                    <div class="image-overlay">
+                                        <img
+                                            src="images/footer/footerpic2.png"
+                                            alt=""
+                                        />
+                                        <div class="overly-city">
+                                            <span>ZET Festive Tours</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="sports-tours">
+                                    <div class="image-overlay">
+                                        <img
+                                            src="images/footer/footerpic1.png"
+                                            alt=""
+                                        />
+                                        <div class="overly-city">
+                                            <span>Sport Academy Tours</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- footer destination -->
+
+                <!-- footer contact -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-footer">
+                        <div class="footer-title">
+                            <h3>Quick Contact</h3>
+                        </div>
+                        <div class="footer-contact-form">
+                            <form action="contactus" method="post">
+                                <ul class="footer-form-element">
+                                    <li>
+                                        <input
+                                            type="text"
+                                            name="email"
+                                            id="email"
+                                            placeholder=""
+                                            value="Email Address"
+                                            onblur="if(this.value==''){this.value='Email Address'}"
+                                            onfocus="if(this.value=='Email Address'){this.value=''}"
+                                        />
+                                    </li>
+                                    <li>
+                                        <textarea
+                                            name="message"
+                                            id="message"
+                                            cols="30"
+                                            rows="10"
+                                            placeholder="Message"
+                                        ></textarea>
+                                    </li>
+                                    <li>
+                                        <button>Send</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                        <div class="footer-social-media">
+                            <div class="social-footer-title">
+                                <h3>Follow Us</h3>
+                            </div>
+                            <ul class="footer-social-link">
+                                <li>
+                                    <a
+                                        href="https://www.facebook.com/zenithtravelgroup/"
+                                        ><i class="fa fa-facebook"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/zenithtravels1"
+                                        ><i class="fa fa-twitter"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/mwlite/company/zenith-travel-group"
+                                        ><i class="fa fa-linkedin"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://instagram.com/zenithtravels"
+                                        ><i class="fa fa-instagram"></i
+                                    ></a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://youtube.com/channel/UCjSkjfLXujEwUdfRAmXV4CA"
+                                        ><i class="fa fa-youtube-play"></i
+                                    ></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer contact -->
+            </div>
+
+            <div class="footer-bottom">
+                <div class="col-md-4">
+                    <div class="copyright">
+                        <p>
+                            &copy; {{ new Date().getUTCFullYear() }} Zenith
+                            Travels and Tours Ltd.<br /><b
+                                style="
+                                    font-weight: normal !important;
+                                    font-size: smaller !important;
+                                    color: #ccc !important;
+                                "
+                                >Managed by
+                            </b>
+                            <a href="#"
+                                ><span
+                                    style="
+                                        font-weight: normal !important;
+                                        font-size: smaller !important;
+                                    "
+                                    >Saxum Analytics</span
+                                ></a
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 copyright">
+                    <div align="center">
+                        <p>
+                            <a href="/"><span>Home</span></a> |
+                            <a href="photo-gallery"><span>Photos</span></a> |
+                            <a href="tour-videos"><span>Videos</span></a> |
+                            <a href="aboutus"><span>About</span></a> |
+                            <a href="contactus"><span>Contacts</span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <ul class="payicon pull-right">
+                        <li>We Accept</li>
+                        <li><img src="images/payicon02.png" alt="" /></li>
+                        <li><img src="images/payicon03.png" alt="" /></li>
+                        <li><img src="images/payicon05.png" alt="" /></li>
+                        <li><img src="images/payicon06.png" alt="" /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <div class="to-top pos-rtive">
         <a href="#"><i class="fa fa-angle-up"></i></a>
     </div>
-    <!-- Scroll to top-->
 </template>

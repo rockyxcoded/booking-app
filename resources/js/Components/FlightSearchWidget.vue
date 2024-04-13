@@ -4,11 +4,15 @@ import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
 import FlightBooking from "@/Components/FlightBooking.vue";
 import axios from "axios";
 import VueDatePicker from "@vuepic/vue-datepicker";
+import { ModelListSelect } from "vue-search-select";
+import debounce from "lodash.debounce";
 // import "@vuepic/vue-datepicker/dist/main.css";
 
 const allFlights = ref({});
 const stepper = ref(1);
 const selectedFlight = ref({});
+const locations1 = ref([]);
+const locations2 = ref([]);
 
 const form = useForm({
     location: "",
@@ -21,18 +25,26 @@ const form = useForm({
     trip_type: "round",
 });
 
+const getLocations1 = debounce(async (query) => {
+    const response = await axios.post(route("flights.locations"), { query });
+    locations1.value =
+        response.data.map((l) => ({
+            code: l.city.code,
+            name: l.name,
+        })) ?? [];
+}, 900);
+
+const getLocations2 = debounce(async (query) => {
+    const response = await axios.post(route("flights.locations"), { query });
+    locations2.value =
+        response.data.map((l) => ({
+            code: l.city.code,
+            name: l.name,
+        })) ?? [];
+}, 900);
+
 const submit = async (e) => {
     e.preventDefault();
-    // const formData = new FormData(e.target);
-    // form.location = formData.get("location");
-    // form.destination = formData.get("destination");
-    // form.departure_date = formData.get("departure_date");
-    // form.return_date = formData.get("return_date");
-    // form.cabin_class = formData.get("cabin_class");
-    // form.adults = formData.get("adults") ?? 0;
-    // form.children = formData.get("children") ?? 0;
-    // form.trip_type = formData.get("trip_type") ?? "round";
-
     try {
         form.processing = true;
         const response = await axios.post(route("flights.search"), form);
@@ -71,42 +83,28 @@ onMounted(() => {});
     <div class="flights-form">
         <form method="post" @submit.prevent="submit($event)">
             <div class="tour-input-20 input-b">
-                <select
-                    name="location"
-                    class="custom-select"
-                    required
+                <ModelListSelect
+                    :list="locations1"
+                    option-value="code"
+                    option-text="name"
                     v-model="form.location"
-                >
-                    <option value="">Origin City or airport</option>
-                    <option value="LOS">Lagos</option>
-                    <option value="NYC">New York City</option>
-                    <option value="LON">London</option>
-                    <option value="CAN">CANADA</option>
-                </select>
+                    placeholder="From"
+                    @searchchange="(e) => getLocations1(e)"
+                    class="hotel-input-first"
+                />
             </div>
             <div class="tour-input-20 input-b">
-                <select
-                    name="destination"
-                    class="custom-select"
-                    required
+                <ModelListSelect
+                    :list="locations2"
+                    option-value="code"
+                    option-text="name"
                     v-model="form.destination"
-                >
-                    <option value="">Destination City</option>
-                    <option value="LOS">Lagos</option>
-                    <option value="NYC">New York City</option>
-                    <option value="LON">London</option>
-                </select>
+                    placeholder="To"
+                    @searchchange="(e) => getLocations2(e)"
+                    class="hotel-input-first"
+                />
             </div>
             <div class="tour-input-15 input-s">
-                <!-- <input
-                    type="text"
-                    name="departure_date"
-                    id="datepicker3"
-                    class="hotel-input-first"
-                    placeholder="Departure date"
-                    required
-                    v-model="form.departure_date"
-                /> -->
                 <VueDatePicker
                     v-model="form.departure_date"
                     placeholder="Departure date"
@@ -116,15 +114,6 @@ onMounted(() => {});
                 />
             </div>
             <div class="tour-input-15 input-s">
-                <!-- <input
-                    type="text"
-                    name="return_date"
-                    id="datepicker4"
-                    class="hotel-input-first"
-                    placeholder="Return date"
-                    required
-                    v-model="form.return_date"
-                /> -->
                 <VueDatePicker
                     v-model="form.return_date"
                     :enable-time-picker="false"

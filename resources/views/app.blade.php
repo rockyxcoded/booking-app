@@ -53,8 +53,12 @@
     <!-- <link rel="stylesheet" href="/css/ext/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="/css/ext/bootstrap-theme.min.css"> -->
     <!-- <link rel="stylesheet" href="/css/ext/js/bootstrap.min.js"> -->
+
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
     
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,53 +82,58 @@
         @inertia
 
 
-    <script src="/js/vendor/jquery-3.2.0.min.js"></script>
+    <!-- <script src="/js/vendor/jquery-3.2.0.min.js"></script> -->
     <!-- bootstrap js -->
-    <script src="/js/bootstrap.min.js"></script>
+    <!-- <script src="/js/bootstrap.min.js"></script> -->
     <!-- owl.carousel js -->
-    <script src="/js/owl.carousel.min.js"></script>
+    <!-- <script src="/js/owl.carousel.min.js"></script> -->
     <!-- slick js -->
-    <script src="/js/slick.min.js"></script>
+    <!-- <script src="/js/slick.min.js"></script> -->
     <!-- meanmenu js -->
-    <script src="/js/jquery.meanmenu.min.js"></script>
+    <!-- <script src="/js/jquery.meanmenu.min.js"></script> -->
     <!-- jquery-ui js -->
-    <script src="/js/jquery-ui.min.js"></script>
+    <!-- <script src="/js/jquery-ui.min.js"></script> -->
     <!-- wow js -->
-    <script src="/js/wow.min.js"></script>
+    <!-- <script src="/js/wow.min.js"></script> -->
     <!-- counter js -->
-    <script src="/js/jquery.counterup.min.js"></script>
+    <!-- <script src="/js/jquery.counterup.min.js"></script> -->
     <!-- Countdown js -->
-    <script src="/js/jquery.countdown.min.js"></script>
+    <!-- <script src="/js/jquery.countdown.min.js"></script> -->
     <!-- waypoints js -->
-    <script src="/js/jquery.waypoints.min.js"></script>
+    <!-- <script src="/js/jquery.waypoints.min.js"></script> -->
     <!-- Isotope js -->
-    <script src="/js/isotope.pkgd.min.js"></script>
+    <!-- <script src="/js/isotope.pkgd.min.js"></script> -->
     <!-- magnific js -->
-    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="/js/jquery.magnific-popup.min.js"></script> -->
     <!-- Image loaded js -->
-    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="/js/imagesloaded.pkgd.min.js"></script> -->
     <!-- chossen js -->
-    <script src="/js/chosen.jquery.min.js"></script>  
+    <!-- <script src="/js/chosen.jquery.min.js"></script>   -->
     <!-- Jquery plugin -->
-    <script src="/js/plugins.js"></script>
+    <!-- <script src="/js/plugins.js"></script> -->
     <!-- select2 js plugin -->
-    <script src="/js/select2.min.js"></script>    
-    <script src="/js/colors.js"></script>
+    <!-- <script src="/js/select2.min.js"></script>     -->
+    <!-- <script src="/js/colors.js"></script> -->
     <!-- Jquery plugin -->
-    <script src="/js/jquery-customselect.js"></script>
+    <!-- <script src="/js/jquery-customselect.js"></script> -->
     <!-- main js -->
-    <script src="/js/custom.js"></script>
-    <script src="/javascript/site.js"></script>
+    <!-- <script src="/js/custom.js"></script>
+    <script src="/javascript/site.js"></script> -->
 
      <!-- ============================
     		JavaScript Files
     ============================= -->
     <!-- jquery -->
-    <script src="js/vendor/jquery-3.2.0.min.js"></script>
+    <!-- <script src="js/vendor/jquery-3.2.0.min.js"></script> -->
     <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
     <!-- owl.carousel js -->
     <script src="js/owl.carousel.min.js"></script>
@@ -149,7 +158,7 @@
     <!-- Image loaded js -->
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <!-- chossen js -->
-    <script src="js/chosen.jquery.min.js"></script>
+    <!-- <script src="js/chosen.jquery.min.js"></script> -->
     <!-- Revolution JS -->
     <script src="js/assets/revolution/jquery.themepunch.revolution.min.js"></script>
     <script src="js/assets/revolution/jquery.themepunch.tools.min.js"></script>

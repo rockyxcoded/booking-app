@@ -1,14 +1,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import FlightSearchWidget from "@/Components/FlightSearchWidget.vue";
+import CarsSearchWidget from "@/Components/CarsSearchWidget.vue";
 import HotelSearchWidget from "@/Components/HotelSearchWidget.vue";
+import AttractionSearchWidget from "@/Components/AttractionSearchWidget.vue";
 
 // const model = defineModel({
 //     type: String,
 //     required: false,
 // });
 
-const input = ref(null);
+const selectedTab = ref("flights");
 
 onMounted(() => {});
 
@@ -22,8 +24,9 @@ onMounted(() => {});
     border-radius: 20px;
     background-color: #f5f5f5;
 }
-
-.active {
+.tab-content > .active {
+    display: flex !important;
+    justify-content: center;
 }
 </style>
 
@@ -37,7 +40,11 @@ onMounted(() => {});
                             <ul class="tab-menu" id="myTab1">
                                 <li class="active">
                                     <h6>
-                                        <a href="#flights" data-easein="fadeIn">
+                                        <a
+                                            href="#flights"
+                                            data-easein="fadeIn"
+                                            @click="selectedTab = 'flights'"
+                                        >
                                             flights
                                             <i
                                                 class="fa fa-plane fa-lg"
@@ -48,7 +55,11 @@ onMounted(() => {});
                                 </li>
                                 <li>
                                     <h6>
-                                        <a href="#hotels" data-easein="fadeIn">
+                                        <a
+                                            href="#hotels"
+                                            data-easein="fadeIn"
+                                            @click="selectedTab = 'hotels'"
+                                        >
                                             Hotels
                                             <i
                                                 class="fa fa-bed fa-lg"
@@ -62,6 +73,7 @@ onMounted(() => {});
                                         <a
                                             href="#vehicles"
                                             data-easein="fadeIn"
+                                            @click="selectedTab = 'vehicles'"
                                         >
                                             Cars
                                             <i
@@ -73,7 +85,10 @@ onMounted(() => {});
                                 </li>
                                 <li>
                                     <h6>
-                                        <a href="#ship" data-easein="fadeIn"
+                                        <a
+                                            href="#attraction"
+                                            data-easein="fadeIn"
+                                            @click="selectedTab = 'attraction'"
                                             >Attraction
                                             <i
                                                 class="fa fa-camera fa-lg"
@@ -82,7 +97,7 @@ onMounted(() => {});
                                         </a>
                                     </h6>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <h6>
                                         <a href="#ship" data-easein="fadeIn"
                                             >Crusies
@@ -92,169 +107,41 @@ onMounted(() => {});
                                             ></i>
                                         </a>
                                     </h6>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <!-- tab menu end here -->
 
-                        <div class="tab-content" id="tab-content1">
+                        <div
+                            class="tab-content"
+                            id="tab-content1"
+                            styes="display: flex !important; justify-content: center !important;"
+                        >
                             <div class="tab-pane active" id="flights">
-                                <FlightSearchWidget />
+                                <FlightSearchWidget
+                                    v-if="selectedTab == 'flights'"
+                                />
                             </div>
                             <!-- flights form start here -->
                             <div class="tab-pane" id="vehicles">
-                                <HotelSearchWidget />
+                                <CarsSearchWidget
+                                    v-if="selectedTab == 'vehicles'"
+                                />
                             </div>
                             <!-- vehicles form end here -->
                             <div class="tab-pane" id="hotels">
-                                <div class="hotels-form">
-                                    <form action="contact.php" method="post">
-                                        <div class="hotel-input-2 input-b">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="keyword"
-                                                class="hotel-input-first"
-                                                placeholder="Type Keyword"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4 input-b">
-                                            <select
-                                                id="standard1"
-                                                name="standard"
-                                                class="custom-select"
-                                            >
-                                                <option value="">
-                                                    Select a Location
-                                                </option>
-                                                <option value="Us">
-                                                    America
-                                                </option>
-                                                <option value="Canda">
-                                                    Canada
-                                                </option>
-                                                <option value="london">
-                                                    London
-                                                </option>
-                                                <option value="france">
-                                                    Paris
-                                                </option>
-                                                <option value="bd">
-                                                    Bangladesh
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="hotel-input-1 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="datepicker"
-                                                class="hotel-input-first"
-                                                placeholder="Check-In"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-1 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="datepicker1"
-                                                class="hotel-input-first"
-                                                placeholder="Check-out"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-1 input-s">
-                                            <input
-                                                type="number"
-                                                name="s"
-                                                id="number"
-                                                class="hotel-input-first"
-                                                placeholder="Guest"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-1 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="budget"
-                                                class="hotel-input-first"
-                                                placeholder="Budget"
-                                            />
-                                        </div>
-                                        <div class="searc-btn-7">
-                                            <button type="submit">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <HotelSearchWidget
+                                    v-if="selectedTab == 'hotels'"
+                                />
                             </div>
-                            <!-- hotel form end here -->
-                            <div class="tab-pane" id="tour">
-                                <div class="hotels-form">
-                                    <form action="#" method="post">
-                                        <div class="hotel-input-4-23 input-b">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="keyword2"
-                                                class="hotel-input-first"
-                                                placeholder="Type Keyword"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4-23 input-b">
-                                            <select
-                                                id="standard2"
-                                                name="standard"
-                                                class="custom-select"
-                                            >
-                                                <option value="">
-                                                    Select a Location
-                                                </option>
-                                                <option value="Us">
-                                                    America
-                                                </option>
-                                                <option value="Canda">
-                                                    Canada
-                                                </option>
-                                                <option value="london">
-                                                    London
-                                                </option>
-                                                <option value="france">
-                                                    Paris
-                                                </option>
-                                                <option value="bd">
-                                                    Bangladesh
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="datepicker2"
-                                                class="hotel-input-first"
-                                                placeholder="Check-In Date"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="number"
-                                                name="s"
-                                                id="number1"
-                                                class="hotel-input-first"
-                                                placeholder="Number of Guest"
-                                            />
-                                        </div>
-                                        <div class="searc-btn-7">
-                                            <button type="submit">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+                            <!-- Attraction form end here -->
+                            <div class="tab-pane" id="attraction">
+                                <AttractionSearchWidget
+                                    v-if="selectedTab == 'attraction'"
+                                />
                             </div>
-                            <!-- hotel form end here -->
-                            <div class="tab-pane" id="ship">
+                            <!-- Attraction form end here -->
+                            <!-- <div class="tab-pane" id="ship">
                                 <div class="hotels-form">
                                     <form action="#" method="post">
                                         <div class="hotel-input-4-23 input-s">
@@ -300,7 +187,7 @@ onMounted(() => {});
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- ship form end here -->
                         </div>
                         <!-- tab content end -->

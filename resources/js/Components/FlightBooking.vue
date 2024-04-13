@@ -56,7 +56,8 @@ onMounted(() => {});
             </div>
 
             <button type="button" class="btn btn-primary" @click="bookFlight">
-                Book Now
+                <template v-if="form.processing">Processing</template>
+                <template v-else>Book Now</template>
             </button>
         </form>
     </div>
