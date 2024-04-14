@@ -22,7 +22,7 @@ const form = useForm({
 const getLocations = debounce(async (city) => {
     const response = await axios.post(route("attractions.suggest"), { city });
     locations.value = response.data ?? [];
-}, 900);
+}, 500);
 
 const submit = async (e) => {
     try {

@@ -21,18 +21,19 @@ const form = useForm({
     return_date: "",
     cabin_class: "",
     adults: "",
-    children: "",
+    children: "0",
     trip_type: "round",
 });
 
-const getLocations1 = debounce(async (query) => {
+const getLocations1 = debounce(async (query, loading) => {
+    console.log(query, loading);
     const response = await axios.post(route("flights.locations"), { query });
     locations1.value =
         response.data.map((l) => ({
             code: l.city.code,
             name: l.name,
         })) ?? [];
-}, 900);
+}, 500);
 
 const getLocations2 = debounce(async (query) => {
     const response = await axios.post(route("flights.locations"), { query });
@@ -41,7 +42,7 @@ const getLocations2 = debounce(async (query) => {
             code: l.city.code,
             name: l.name,
         })) ?? [];
-}, 900);
+}, 500);
 
 const submit = async (e) => {
     e.preventDefault();
@@ -73,6 +74,7 @@ const selectFlight = (itinerary_data) => {
 
 const closeModal = () => {
     $("#staticBackdrop").modal("hide");
+    console.log("I was triggered");
 };
 onMounted(() => {});
 
@@ -161,7 +163,7 @@ onMounted(() => {});
                     required
                     v-model="form.children"
                 >
-                    <option value="">Kids</option>
+                    <option value="0">Kids</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

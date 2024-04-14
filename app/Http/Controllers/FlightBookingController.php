@@ -16,17 +16,15 @@ class FlightBookingController extends Controller
     public function getAvailableFlightCities(Request $request)
     {
 
-        // return cache()->rememberForever('suggestswwww', function () use ($request) {
+        // return cache()->rememberForever('suggestswsswww', function () use ($request) {
         $response = Http::withHeaders([
             'X-RapidAPI-Host' => 'priceline-com-provider.p.rapidapi.com',
-            'X-RapidAPI-Key' => '772958ad40mshfad83f7bf055a6fp1ae3c1jsn3a19d5547048',
+            'X-RapidAPI-Key' => 'd6e5ce6828msh4a6dc81d267464fp1ef074jsn54e2016eec68',
         ])->get('https://priceline-com-provider.p.rapidapi.com/v1/flights/locations', [
             'name' => $request->input('query'),
         ]);
 
         $flightLocations = $response->collect();
-
-        return $flightLocations;
 
         if ($flightLocations->has('error')) {
             // throw new HttpClientException($flightLocations->get('error')['status'], 500);

@@ -661,7 +661,7 @@ p {
      border-right: none;
 }
  .tabbased-search-area .tab-content .flights-form .tour-input-7-5 .custom-select {
-     background: #fff url("../images/arrow.png");
+     /* background: #fff url("../images/arrow.png"); */
      background-repeat: no-repeat;
      background-position: center right 8px;
 }

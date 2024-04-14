@@ -32,7 +32,7 @@ const getDropOffLocations = debounce(async (city) => {
     }));
 
     dropOffLocations.value = result ?? [];
-}, 900);
+}, 500);
 
 const getPickupLocations = debounce(async (city) => {
     const response = await axios.post(route("cars.suggest"), { city });
@@ -45,7 +45,7 @@ const getPickupLocations = debounce(async (city) => {
     }));
 
     pickupLocations.value = result ?? [];
-}, 900);
+}, 500);
 
 const submit = async (e) => {
     try {

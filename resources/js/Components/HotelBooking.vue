@@ -7,20 +7,24 @@ const props = defineProps({
     form: { type: Object, default: {} },
 });
 
-const emit = defineEmits(["close-modal"]);
+const emit = defineEmits(["closeModal"]);
 
 const form = useForm({
     name: "",
     email: "",
     phone: "",
-    ...props.form,
-    hotel: props.hotel,
 });
+
+form.transform((data) => ({
+    ...data,
+    ...(props.form && props.form),
+    hotel: props.hotel,
+}));
 
 const bookHotel = () => {
     form.post(route("hotels.store"), {
         onSuccess: () => {
-            emit("close-modal");
+            emit("closeModal");
             Swal.fire({
                 title: "Success!",
                 text: "Thank you for booking with Zenith Travels, your booking details have been sent to your email",
