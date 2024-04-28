@@ -21,6 +21,38 @@ use Inertia\Inertia;
 |
 */
 
+Route::middleware('guest')->group(function () {
+    Route::get('/flights/search', [FlightBookingController::class, 'index'])->name('flights.index');
+    Route::post('/flights', [FlightBookingController::class, 'store'])->name('flights.store');
+    Route::get('/flights/{id}', [FlightBookingController::class, 'show'])->name('flights.show');
+    Route::post('/flights/locations', [FlightBookingController::class, 'getAvailableFlightCities'])->name('flights.locations');
+    Route::post('/flights/search', [FlightBookingController::class, 'getAirFlightRoundTrip'])->name('flights.search');
+
+    Route::name('hotels.')->prefix('hotels')->group(function () {
+        Route::get('/', [HotelBookingController::class, 'index'])->name('index');
+        Route::post('/store', [HotelBookingController::class, 'store'])->name('store');
+        Route::get('/{id}', [HotelBookingController::class, 'show'])->name('show');
+        Route::post('/search', [HotelBookingController::class, 'findAvailableHotels'])->name('search');
+        Route::post('/suggest', [HotelBookingController::class, 'hotelAutoSuggest'])->name('suggest');
+    });
+
+    Route::name('cars.')->prefix('cars')->group(function () {
+        Route::get('/', [CarBookingController::class, 'index'])->name('index');
+        Route::post('/store', [CarBookingController::class, 'store'])->name('store');
+        Route::get('/{id}', [CarBookingController::class, 'show'])->name('show');
+        Route::post('/search', [CarBookingController::class, 'findAvailableCars'])->name('search');
+        Route::post('/suggest', [CarBookingController::class, 'findAvailableCities'])->name('suggest');
+    });
+
+    Route::name('attractions.')->prefix('attractions')->group(function () {
+        Route::get('/', [AttractionBookingController::class, 'index'])->name('index');
+        Route::post('/store', [AttractionBookingController::class, 'store'])->name('store');
+        Route::get('/{id}', [AttractionBookingController::class, 'show'])->name('show');
+        Route::post('/search', [AttractionBookingController::class, 'findAvailableAttractions'])->name('search');
+        Route::post('/suggest', [AttractionBookingController::class, 'findAvailableLocations'])->name('suggest');
+    });
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -38,30 +70,6 @@ Route::fallback(function () {
 Route::get('/migrate', function () {
     Artisan::call('migrate:fresh', ['--force' => true]);
     dd('done');
-});
-
-Route::name('flights.')->prefix('flights')->group(function () {
-    Route::post('/store', [FlightBookingController::class, 'store'])->name('store');
-    Route::post('/locations', [FlightBookingController::class, 'getAvailableFlightCities'])->name('locations');
-    Route::post('/search', [FlightBookingController::class, 'getAirFlightRoundTrip'])->name('search');
-});
-
-Route::name('hotels.')->prefix('hotels')->group(function () {
-    Route::post('/store', [HotelBookingController::class, 'store'])->name('store');
-    Route::post('/search', [HotelBookingController::class, 'findAvailableHotels'])->name('search');
-    Route::post('/suggest', [HotelBookingController::class, 'hotelAutoSuggest'])->name('suggest');
-});
-
-Route::name('cars.')->prefix('cars')->group(function () {
-    Route::post('/store', [CarBookingController::class, 'store'])->name('store');
-    Route::post('/search', [CarBookingController::class, 'findAvailableCars'])->name('search');
-    Route::post('/suggest', [CarBookingController::class, 'findAvailableCities'])->name('suggest');
-});
-
-Route::name('attractions.')->prefix('attractions')->group(function () {
-    Route::post('/store', [AttractionBookingController::class, 'store'])->name('store');
-    Route::post('/search', [AttractionBookingController::class, 'findAvailableAttractions'])->name('search');
-    Route::post('/suggest', [AttractionBookingController::class, 'findAvailableLocations'])->name('suggest');
 });
 
 Route::get('/dashboard', function () {

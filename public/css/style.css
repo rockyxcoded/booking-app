@@ -261,14 +261,15 @@ p {
 
 /*===================================== 01. header section css goes here ======================================*/
  header {
-     position: absolute;
-     z-index: 99;
+     /* position: absolute;
+     z-index: 99; */
      width: 100%;
-     top: 0;
-     left: 0;
+     /* top: 0;
+     left: 0; */
 }
  .header-top-area {
-     background: rgba(34, 67, 74, 0.5);
+     /* background: rgba(34, 67, 74, 0.5); */
+     background: rgba(34, 67, 74);
 }
  .header-top-area .header-top-left .header-top-contact li {
      display: inline-block;
@@ -415,7 +416,7 @@ p {
 }
 /*===================================================== 02. slider area section title css goes here =======================================================*/
  .slider-area {
-     min-height: 1000px;
+     /* min-height: 1000px; */
 }
  .slider-area .tparrows {
      background: #37b721 !important;
@@ -452,13 +453,10 @@ p {
 }
 /*===================================================== 03. tab-search-area section title css goes here =======================================================*/
  .tabbased-search-area {
-     position: absolute;
+     background: rgba(34, 67, 74, .7);
      width: 100%;
-     left: 0;
-     right: 0;
      text-align: center;
-     /* margin-top: -200px; */
-     margin-top: -300px;
+     padding: 10px 0 10px 0px;
 }
  .tabbased-search-area a:focus {
      outline: none;
@@ -4359,7 +4357,7 @@ p {
      color: #ffffff;
      background: #f17b37;
 }
-/*# sourceMappingURL=style.css.map */
+
 
 /* Updated Style */
 .index-2 .main-menu > li > a:before, .header-area-style-3 .main-menu > li > a:before, .header-bottom-area-4 .main-menu > li > a:before{
@@ -4392,6 +4390,7 @@ p {
 .header-top-right .book-btn a {
     padding: 12px 16px;
     display: block;
+    text-decoration: none;
 }
 .section-title h2, .section-title-white h2, .section-title-white-2 h2 {
     font-size: 37px;

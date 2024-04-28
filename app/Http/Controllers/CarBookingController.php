@@ -10,6 +10,29 @@ use Illuminate\Support\Facades\Http;
 
 class CarBookingController extends Controller
 {
+    public function index(Request $request)
+    {
+        $result = cache()->get('cars');
+
+        return inertia('Car/Index', [
+            'cars' => [...array_values($result['result']['itinerary_data'])],
+            'queryParams' => $request->all(),
+        ]);
+    }
+
+    public function show(Request $request, string $id)
+    {
+        $encoded = $request->header('Itinerary-Data');
+        $decoded = json_decode(base64_decode($encoded), true);
+
+        // abort_if(is_null($decoded), 404);
+
+        return inertia('Car/Show', [
+            'car' => $decoded,
+
+        ]);
+    }
+
     public function findAvailableCities(Request $request)
     {
 

@@ -10,6 +10,29 @@ use Illuminate\Support\Facades\Http;
 
 class AttractionBookingController extends Controller
 {
+    public function index(Request $request)
+    {
+        $result = cache()->get('attractions');
+
+        return inertia('Attraction/Index', [
+            'attractions' => [...array_values($result['result']['itinerary_data'])],
+            'queryParams' => $request->all(),
+        ]);
+    }
+
+    public function show(Request $request, string $id)
+    {
+        $encoded = $request->header('Itinerary-Data');
+        $decoded = json_decode(base64_decode($encoded), true);
+
+        // abort_if(is_null($decoded), 404);
+
+        return inertia('Attraction/Show', [
+            'attraction' => $decoded,
+
+        ]);
+    }
+
     public function findAvailableLocations(Request $request)
     {
 

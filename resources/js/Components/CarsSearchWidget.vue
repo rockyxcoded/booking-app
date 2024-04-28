@@ -94,8 +94,8 @@ onMounted(() => {});
 
 <template>
     <div class="hotels-form">
-        <form @submit.prevent="submit($event)" method="POST">
-            <div class="hotel-input-2 input-b">
+        <form @submit.prevent="submit($event)" method="POST" class="row g-1">
+            <div class="col-md-3 mb-3">
                 <ModelListSelect
                     :list="pickupLocations"
                     option-value="code"
@@ -106,7 +106,7 @@ onMounted(() => {});
                     class="hotel-input-first"
                 />
             </div>
-            <div class="hotel-input-2 input-s">
+            <div class="col-md-3 mb-3">
                 <VueDatePicker
                     v-model="form.pickup_datetime"
                     placeholder="Pickup Date & Time"
@@ -116,7 +116,7 @@ onMounted(() => {});
                     required
                 />
             </div>
-            <div class="hotel-input-2 input-b">
+            <div class="col-md-3 mb-3">
                 <ModelListSelect
                     :list="dropOffLocations"
                     option-value="code"
@@ -127,7 +127,7 @@ onMounted(() => {});
                     class="hotel-input-first"
                 />
             </div>
-            <div class="hotel-input-2 input-s">
+            <div class="col-md-2 mb-3">
                 <VueDatePicker
                     v-model="form.dropoff_datetime"
                     placeholder="DropOff Date & time"
@@ -137,24 +137,14 @@ onMounted(() => {});
                     required
                 />
             </div>
-            <!-- <div class="hotel-input-1 input-s">
-                <input
-                    v-model="form.children"
-                    type="number"
-                    class="hotel-input-first"
-                    placeholder="Children"
-                />
-            </div>
-            <div class="hotel-input-1 input-s">
-                <input
-                    v-model="form.adults"
-                    type="number"
-                    class="hotel-input-first"
-                    placeholder="Adults"
-                />
-            </div> -->
-            <div class="searc-btn-7">
-                <button type="submit" :disabled="form.processing">
+
+            <div class="col-md-1">
+                <button
+                    type="submit"
+                    :disabled="form.processing"
+                    class="btn btn-success"
+                    style="height: 50px"
+                >
                     <template v-if="form.processing"> Searching... </template>
                     <template v-else> Search </template>
                 </button>

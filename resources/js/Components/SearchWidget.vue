@@ -4,13 +4,11 @@ import FlightSearchWidget from "@/Components/FlightSearchWidget.vue";
 import CarsSearchWidget from "@/Components/CarsSearchWidget.vue";
 import HotelSearchWidget from "@/Components/HotelSearchWidget.vue";
 import AttractionSearchWidget from "@/Components/AttractionSearchWidget.vue";
+import { router } from "@inertiajs/vue3";
 
-// const model = defineModel({
-//     type: String,
-//     required: false,
-// });
+import { useTabStore } from "@/stores/TabStore";
 
-const selectedTab = ref("flights");
+const store = useTabStore();
 
 onMounted(() => {});
 
@@ -23,172 +21,184 @@ onMounted(() => {});
     margin-bottom: 1.5rem;
     border-radius: 20px;
     background-color: #f5f5f5;
+    /* box-shadow: 0 8px 20px 0 rgba(15,41,77,.12); */
 }
 .tab-content > .active {
     display: flex !important;
     justify-content: center;
 }
+.nav-link {
+    color: #198754;
+}
+.nav-link:hover {
+    color: var(--bs-orange);
+}
+.nav-pills .nav-link.active {
+    background-color: var(--bs-green);
+    border-radius: 17px;
+}
+.tabbased-search-area1 {
+    background: rgba(34, 67, 74, 0.7);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 10px 0px;
+}
+.tabbased-search-area1 .form-control,
+.dp__input,
+.form-select {
+    height: 53px !important;
+}
 </style>
 
 <template>
-    <section class="tabbased-search-area">
-        <div class="container">
+    <section class="tabbased-search-area1">
+        <div class="container contain">
             <div class="search-area">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="tabbable-menu">
-                            <ul class="tab-menu" id="myTab1">
-                                <li class="active">
-                                    <h6>
-                                        <a
-                                            href="#flights"
-                                            data-easein="fadeIn"
-                                            @click="selectedTab = 'flights'"
-                                        >
-                                            flights
-                                            <i
-                                                class="fa fa-plane fa-lg"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </h6>
+                <div class="tabbable-menu">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center"
+                    >
+                        <div>
+                            <ul
+                                class="nav nav-pills mb-3"
+                                id="pills-tab"
+                                role="tablist"
+                            >
+                                <li class="nav-item mb-4" role="presentation">
+                                    <button
+                                        class="nav-link"
+                                        :class="{
+                                            active:
+                                                store.selectedTab == 'flights',
+                                        }"
+                                        id="flight-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#flight"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="flight"
+                                        aria-selected="true"
+                                        @click="store.selectedTab = 'flights'"
+                                    >
+                                        Flights
+                                        <i
+                                            class="fa fa-plane fa-lg"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
                                 </li>
-                                <li>
-                                    <h6>
-                                        <a
-                                            href="#hotels"
-                                            data-easein="fadeIn"
-                                            @click="selectedTab = 'hotels'"
-                                        >
-                                            Hotels
-                                            <i
-                                                class="fa fa-bed fa-lg"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </h6>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link"
+                                        :class="{
+                                            active:
+                                                store.selectedTab == 'hotels',
+                                        }"
+                                        id="hotels-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#hotels"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="hotels"
+                                        aria-selected="false"
+                                        @click="store.selectedTab = 'hotels'"
+                                    >
+                                        Hotels
+                                        <i
+                                            class="fa fa-bed fa-lg"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
                                 </li>
-                                <li>
-                                    <h6>
-                                        <a
-                                            href="#vehicles"
-                                            data-easein="fadeIn"
-                                            @click="selectedTab = 'vehicles'"
-                                        >
-                                            Cars
-                                            <i
-                                                class="fa fa-car fa-lg"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </h6>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link"
+                                        id="vehicles-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#vehicles"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="vehicles"
+                                        aria-selected="false"
+                                        @click="store.selectedTab = 'vehicles'"
+                                    >
+                                        Cars
+                                        <i
+                                            class="fa fa-car fa-lg"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
                                 </li>
-                                <li>
-                                    <h6>
-                                        <a
-                                            href="#attraction"
-                                            data-easein="fadeIn"
-                                            @click="selectedTab = 'attraction'"
-                                            >Attraction
-                                            <i
-                                                class="fa fa-camera fa-lg"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </h6>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link"
+                                        id="attractions-tab"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#attractions"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="attractions"
+                                        aria-selected="false"
+                                        @click="
+                                            store.selectedTab = 'attractions'
+                                        "
+                                    >
+                                        Attraction
+                                        <i
+                                            class="fa fa-camera fa-lg"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </button>
                                 </li>
-                                <!-- <li>
-                                    <h6>
-                                        <a href="#ship" data-easein="fadeIn"
-                                            >Crusies
-                                            <i
-                                                class="fa fa-motorcycle fa-lg"
-                                                aria-hidden="true"
-                                            ></i>
-                                        </a>
-                                    </h6>
-                                </li> -->
                             </ul>
                         </div>
                         <!-- tab menu end here -->
 
-                        <div
-                            class="tab-content"
-                            id="tab-content1"
-                            styes="display: flex !important; justify-content: center !important;"
-                        >
-                            <div class="tab-pane active" id="flights">
-                                <FlightSearchWidget
-                                    v-if="selectedTab == 'flights'"
-                                />
+                        <div class="tab-content" id="pills-tabContent">
+                            <div
+                                class="tab-pane fade"
+                                :class="{
+                                    'show active':
+                                        store.selectedTab == 'flights',
+                                }"
+                                id="flight"
+                                role="tabpanel"
+                                aria-labelledby="flight-tab"
+                                tabindex="0"
+                            >
+                                <FlightSearchWidget />
                             </div>
-                            <!-- flights form start here -->
-                            <div class="tab-pane" id="vehicles">
-                                <CarsSearchWidget
-                                    v-if="selectedTab == 'vehicles'"
-                                />
+                            <div
+                                class="tab-pane fade"
+                                id="vehicles"
+                                role="tabpanel"
+                                aria-labelledby="vehicles-tab"
+                                tabindex="0"
+                            >
+                                <CarsSearchWidget />
                             </div>
-                            <!-- vehicles form end here -->
-                            <div class="tab-pane" id="hotels">
-                                <HotelSearchWidget
-                                    v-if="selectedTab == 'hotels'"
-                                />
+                            <div
+                                class="tab-pane fade"
+                                :class="{
+                                    'show active':
+                                        store.selectedTab == 'hotels',
+                                }"
+                                id="hotels"
+                                role="tabpanel"
+                                aria-labelledby="hotels-tab"
+                                tabindex="0"
+                            >
+                                <HotelSearchWidget />
                             </div>
-                            <!-- Attraction form end here -->
-                            <div class="tab-pane" id="attraction">
-                                <AttractionSearchWidget
-                                    v-if="selectedTab == 'attraction'"
-                                />
+                            <div
+                                class="tab-pane fade"
+                                id="attractions"
+                                role="tabpanel"
+                                aria-labelledby="attractions-tab"
+                                tabindex="0"
+                            >
+                                <AttractionSearchWidget />
                             </div>
-                            <!-- Attraction form end here -->
-                            <!-- <div class="tab-pane" id="ship">
-                                <div class="hotels-form">
-                                    <form action="#" method="post">
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="shippickupdate"
-                                                class="hotel-input-first"
-                                                placeholder="Pickup Date & time"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="number"
-                                                name="s"
-                                                id="time"
-                                                class="hotel-input-first"
-                                                placeholder="Hours"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="name"
-                                                class="hotel-input-first"
-                                                placeholder="Pickup Location"
-                                            />
-                                        </div>
-                                        <div class="hotel-input-4-23 input-s">
-                                            <input
-                                                type="text"
-                                                name="s"
-                                                id="drop-location"
-                                                class="hotel-input-first"
-                                                placeholder="Drop Location"
-                                            />
-                                        </div>
-                                        <div class="searc-btn-7">
-                                            <button type="submit">
-                                                Search1
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div> -->
-                            <!-- ship form end here -->
                         </div>
                         <!-- tab content end -->
                     </div>

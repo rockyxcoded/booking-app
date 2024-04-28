@@ -102,15 +102,14 @@
     .tap-v-responsive{ width:100%;}
     .logo-area {  width: 25%; margin: 0px auto;} 
     .header-top-left { display: none;}  
-    .logo-area { position: absolute;top: -70px;}
-    .book-btn { margin-top: 52px;}
+    .logo-area { position: absolute;top: 45px;}
+    .book-btn { margin-top: 52px; margin-left: 12rem;}
     .slider-area .tparrows {display: none;}
     /*---- tab form ----*/
     .tabbased-search-area {
-        background: #2c3035;
-        position: relative;
-        margin-top: 0;
-        padding: 100px 0;
+        /* background: #2c3035; */
+        background: rgba(34, 67, 74, .7); 
+        padding: 20px 0;
     }
     .tab-menu li {padding: 14px !important}
     .custom-select a {width: 100%;}
@@ -255,4 +254,10 @@
     .top-destination-area-5 .single-destionation-5 .destination-5-description .rating-review-5 li:last-child { float: none; }
     .hotels-area-2 .single-hotels-2 .hotel-image img{width: 100%;}
 
+}
+
+@media (min-width: 1400px) {
+    .contain {
+        max-width: 1000px !important;
+    }
 }

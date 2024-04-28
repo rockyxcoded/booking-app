@@ -3,13 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\FlightBooking;
+use App\Service\PricelineService;
 use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class FlightBookingController extends Controller
 {
+    public function index(Request $request)
+    {
+        // $result = cache()->get('flights');
+        $result = app(PricelineService::class)->getAirFlightRoundTrip($request->all());
+
+        return inertia('Flight/Index', [
+            'allFlights' => $result,
+            'queryParams' => $request->all(),
+        ]);
+    }
+
+    public function show(Request $request, string $id)
+    {
+        $encoded = $request->header('Itinerary-Data');
+        $decoded = json_decode(base64_decode($encoded), true);
+
+        // abort_if(is_null($decoded), 404);
+
+        return inertia('Flight/Show', [
+            'flight' => $decoded,
+
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -19,15 +43,16 @@ class FlightBookingController extends Controller
         // return cache()->rememberForever('suggestswsswww', function () use ($request) {
         $response = Http::withHeaders([
             'X-RapidAPI-Host' => 'priceline-com-provider.p.rapidapi.com',
-            'X-RapidAPI-Key' => 'd6e5ce6828msh4a6dc81d267464fp1ef074jsn54e2016eec68',
+            'X-RapidAPI-Key' => 'e8b9f5e2d7msh0d06325056be196p1bf10fjsn7291c489bdcd',
         ])->get('https://priceline-com-provider.p.rapidapi.com/v1/flights/locations', [
             'name' => $request->input('query'),
         ]);
 
         $flightLocations = $response->collect();
 
-        if ($flightLocations->has('error')) {
-            // throw new HttpClientException($flightLocations->get('error')['status'], 500);
+        if ($flightLocations->has('message')) {
+            logger()->error($flightLocations->get('message'));
+            throw new HttpClientException('An error occurred', 500);
         }
 
         // return $flightLocations;
@@ -43,35 +68,6 @@ class FlightBookingController extends Controller
                 'name' => $location['cityName'],
             ],
         ]);
-        // });
-    }
-
-    public function getAirFlightRoundTrip(Request $request)
-    {
-
-        // return cache()->rememberForever('flights', function () use ($request) {
-        $request->return_date = Carbon::parse($request->return_date)->toDateString();
-        $request->departure_date = Carbon::parse($request->departure_date)->toDateString();
-
-        $response = Http::priceline()->get('/flight/roundTrip', [
-            'adults' => $request->adults,
-            'sid' => 'iSiX639',
-            'children' => $request->children,
-            'convert_currency' => 'USD',
-            'cabin_class' => strtolower($request->cabin_class),
-            'origin_airport_code' => "$request->location,$request->destination",
-            'destination_airport_code' => "$request->destination,$request->location",
-            'departure_date' => "$request->departure_date,$request->return_date",
-
-        ]);
-
-        $getAirFlightRoundTrip = $response->collect('getAirFlightRoundTrip');
-
-        if ($getAirFlightRoundTrip->has('error')) {
-            throw new HttpClientException($getAirFlightRoundTrip->get('error')['status'], 500);
-        }
-
-        return $getAirFlightRoundTrip->get('results');
         // });
     }
 
@@ -98,6 +94,6 @@ class FlightBookingController extends Controller
 
         // dispatch(new YourFlightBooking($flight));
 
-        return redirect()->back();
+        return redirect()->route('welcome');
     }
 }

@@ -72,8 +72,8 @@ onMounted(() => {});
 
 <template>
     <div class="hotels-form">
-        <form @submit.prevent="submit($event)" method="POST">
-            <div class="hotel-input-2 input-b">
+        <form @submit.prevent="submit($event)" method="POST" class="row g-1">
+            <div class="col-md-3">
                 <ModelListSelect
                     :list="locations"
                     option-value="code"
@@ -84,7 +84,7 @@ onMounted(() => {});
                     class="hotel-input-first"
                 />
             </div>
-            <div class="hotel-input-2 input-s">
+            <div class="col-md-3">
                 <VueDatePicker
                     v-model="form.start_date"
                     placeholder="Start Date"
@@ -94,8 +94,8 @@ onMounted(() => {});
                     required
                 />
             </div>
-            <div class="hotel-input-2 input-b"></div>
-            <div class="hotel-input-2 input-s">
+
+            <div class="col-md-3">
                 <VueDatePicker
                     v-model="form.end_date"
                     placeholder="End Date"
@@ -106,8 +106,12 @@ onMounted(() => {});
                 />
             </div>
 
-            <div class="searc-btn-7">
-                <button type="submit" :disabled="form.processing">
+            <div class="col-md-3">
+                <button
+                    type="submit"
+                    :disabled="form.processing"
+                    class="btn btn-success btn-lg"
+                >
                     <template v-if="form.processing"> Searching... </template>
                     <template v-else> Search </template>
                 </button>
@@ -136,7 +140,9 @@ onMounted(() => {});
                     >
                         Go back
                     </button>
-                    <h4 class="modal-title" v-if="stepper == 2">Book a Ride</h4>
+                    <h4 class="modal-title" v-if="stepper == 2">
+                        Book Attraction
+                    </h4>
                     <h4 class="modal-title" v-if="stepper == 1">
                         List of available cars
                     </h4>
