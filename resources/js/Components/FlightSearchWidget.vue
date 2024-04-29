@@ -15,6 +15,39 @@ const form = useForm(store.form);
 
 <template>
     <div class="flights-form">
+        <div class="form-check form-check-inline mb-4">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="trip_type"
+                value="round"
+                v-model="store.form.trip_type"
+            />
+            <label class="form-check-label" for="inlineRadio1">Round</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="trip_type"
+                id="inlineRadio2"
+                value="oneway"
+                v-model="store.form.trip_type"
+            />
+            <label class="form-check-label" for="inlineRadio2">One Way</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="trip_type"
+                id="inlineRadio2"
+                value="return"
+                v-model="store.form.trip_type"
+            />
+            <label class="form-check-label" for="inlineRadio2">Return</label>
+        </div>
+
         <form method="post" @submit.prevent="store.onSearch">
             <div class="row g-1">
                 <div class="col-md-6 mb-3">

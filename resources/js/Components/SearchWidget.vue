@@ -48,6 +48,10 @@ onMounted(() => {});
 .form-select {
     height: 53px !important;
 }
+.form-check-input:checked {
+    background-color: var(--bs-green);
+    border-color: var(--bs-green);
+}
 </style>
 
 <template>

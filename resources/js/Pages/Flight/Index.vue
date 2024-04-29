@@ -38,10 +38,10 @@ const selectFlight = (itinerary_data) => {
         {},
         {
             preserveState: true,
-            preserveScroll: true,
-            headers: {
-                "Itinerary-Data": encoded,
-            },
+
+            // headers: {
+            //     "Itinerary-Data": encoded,
+            // },
         }
     );
 };
@@ -61,7 +61,7 @@ onMounted(() => {
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Flights
+                            Flights search result
                         </li>
                     </ol>
                 </nav>
@@ -188,38 +188,44 @@ onMounted(() => {
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div
-                                    class="d-flex justify-content-center gap-2 align-items-between"
-                                >
-                                    <div class="d-flex flex-column">
-                                        <div class="fw-bold">
-                                            {{
-                                                itinerary_data?.price_details
-                                                    ?.display_symbol
-                                            }}
-                                            {{
-                                                itinerary_data?.price_details
-                                                    ?.display_total_fare
-                                            }}
-                                        </div>
-                                        <div>
-                                            {{
-                                                itinerary_data.slice_data
-                                                    ?.slice_0.airline?.name
-                                            }}
-                                        </div>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        class="btn btn-success"
-                                        @click="selectFlight(itinerary_data)"
+                                <div class="card-body">
+                                    <div
+                                        class="d-flex justify-content-between gap-2 align-items-center"
                                     >
-                                        <span class="me-5">Select</span>
-                                        <i
-                                            class="fa fa-angle-right"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </button>
+                                        <div class="d-flex flex-column">
+                                            <div class="fw-bold">
+                                                {{
+                                                    itinerary_data
+                                                        ?.price_details
+                                                        ?.display_symbol
+                                                }}
+                                                {{
+                                                    itinerary_data
+                                                        ?.price_details
+                                                        ?.display_total_fare
+                                                }}
+                                            </div>
+                                            <div>
+                                                {{
+                                                    itinerary_data.slice_data
+                                                        ?.slice_0.airline?.name
+                                                }}
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            class="btn btn-success"
+                                            @click="
+                                                selectFlight(itinerary_data)
+                                            "
+                                        >
+                                            <span class="me-5">Select</span>
+                                            <i
+                                                class="fa fa-angle-right"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

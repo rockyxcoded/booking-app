@@ -35,20 +35,20 @@ class HotelBookingController extends Controller
     public function hotelAutoSuggest(Request $request)
     {
 
-        return cache()->rememberForever('suggests', function () use ($request) {
-            $response = Http::priceline()->get('/hotels/autoSuggest', [
-                'string' => $request->city,
+        // return cache()->rememberForever('suggests', function () use ($request) {
+        $response = Http::priceline()->get('/hotels/autoSuggest', [
+            'string' => $request->city,
 
-            ]);
+        ]);
 
-            $getHotelAutoSuggestV2 = $response->collect('getHotelAutoSuggestV2');
+        $getHotelAutoSuggestV2 = $response->collect('getHotelAutoSuggestV2');
 
-            if ($getHotelAutoSuggestV2->has('error')) {
-                throw new HttpClientException($getHotelAutoSuggestV2->get('error')['status'], 500);
-            }
+        if ($getHotelAutoSuggestV2->has('error')) {
+            throw new HttpClientException($getHotelAutoSuggestV2->get('error')['status'], 500);
+        }
 
-            return $getHotelAutoSuggestV2->get('results');
-        });
+        return $getHotelAutoSuggestV2->get('results');
+        // });
     }
 
     public function store(Request $request)

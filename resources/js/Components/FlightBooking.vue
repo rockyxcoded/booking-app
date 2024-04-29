@@ -2,6 +2,7 @@
 import { onMounted, ref, toRaw } from "vue";
 import { useForm } from "@inertiajs/vue3";
 import { useFlightStore } from "@/stores/FlightStore";
+import VueDatePicker from "@vuepic/vue-datepicker";
 
 const store = useFlightStore();
 
@@ -12,9 +13,15 @@ const props = defineProps({
 
 let myModal = null;
 const form = useForm({
-    name: "",
+    title: "",
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
+    dob: "",
+    passport_number: "",
+    passport_issuing_country: "",
+    passport_expiry_date: "",
 });
 
 form.transform((data) => ({
@@ -78,7 +85,7 @@ onMounted(() => {
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Book Flight
+                        Traveler Details
                     </h1>
                     <button
                         type="button"
@@ -92,17 +99,64 @@ onMounted(() => {
                         <form @submit.prevent="bookFlight">
                             <div class="mb-3">
                                 <label for="name" class="form-label"
-                                    >Name</label
+                                    >Title</label
+                                >
+                                <select
+                                    name="title"
+                                    class="form-select"
+                                    v-model="form.title"
+                                    required
+                                >
+                                    <option value="">Select</option>
+                                    <option value="mr">Mr.</option>
+                                    <option value="mrs">Mrs.</option>
+                                    <option value="ms">Ms.</option>
+                                    <option value="dr">Dr.</option>
+                                    <option value="chief">Chief.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label"
+                                    >First Name</label
                                 >
                                 <input
                                     type="text"
                                     class="form-control"
-                                    :class="{ 'is-invalid': form.errors.name }"
-                                    v-model="form.name"
+                                    :class="{
+                                        'is-invalid': form.errors.first_name,
+                                    }"
+                                    v-model="form.first_name"
                                 />
                                 <div class="invalid-feedback">
-                                    {{ form.errors.name }}
+                                    {{ form.errors.first_name }}
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label"
+                                    >Last Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': form.errors.last_name,
+                                    }"
+                                    v-model="form.last_name"
+                                />
+                                <div class="invalid-feedback">
+                                    {{ form.errors.last_name }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label"
+                                    >Date Of Birth</label
+                                >
+                                <VueDatePicker
+                                    v-model="form.dob"
+                                    :enable-time-picker="false"
+                                    :hide-input-icon="false"
+                                    required
+                                />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email address</label>
@@ -129,6 +183,54 @@ onMounted(() => {
                                 <div class="invalid-feedback">
                                     {{ form.errors.phone }}
                                 </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="passport_number" class="form-label"
+                                    >Passport Number</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid':
+                                            form.errors.passport_number,
+                                    }"
+                                    v-model="form.passport_number"
+                                />
+                                <div class="invalid-feedback">
+                                    {{ form.errors.passport_number }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="issuing_country" class="form-label"
+                                    >Issuing Country</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid':
+                                            form.errors.issuing_country,
+                                    }"
+                                    v-model="form.issuing_country"
+                                />
+                                <div class="invalid-feedback">
+                                    {{ form.errors.issuing_country }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label"
+                                    >Expiry Date</label
+                                >
+                                <VueDatePicker
+                                    v-model="form.passport_expiry_date"
+                                    :enable-time-picker="false"
+                                    :hide-input-icon="false"
+                                    required
+                                />
                             </div>
 
                             <div class="d-flex justify-content-end">

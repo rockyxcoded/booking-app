@@ -13,23 +13,24 @@ class FlightBookingController extends Controller
     public function index(Request $request)
     {
         // $result = cache()->get('flights');
+
         $result = app(PricelineService::class)->getAirFlightRoundTrip($request->all());
 
         return inertia('Flight/Index', [
-            'allFlights' => $result,
+            'allFlights' => array_values($result['result']['itinerary_data']),
             'queryParams' => $request->all(),
         ]);
     }
 
-    public function show(Request $request, string $id)
+    public function show(string $id)
     {
-        $encoded = $request->header('Itinerary-Data');
-        $decoded = json_decode(base64_decode($encoded), true);
+        // $encoded = request()->header('Itinerary-Data');
+        // $decoded = json_decode(base64_decode($encoded), true);
 
         // abort_if(is_null($decoded), 404);
 
         return inertia('Flight/Show', [
-            'flight' => $decoded,
+            // 'flight' => $decoded,
 
         ]);
     }

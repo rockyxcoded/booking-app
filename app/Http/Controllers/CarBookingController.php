@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarBooking;
-use Carbon\Carbon;
+use App\Service\PricelineService;
 use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -12,23 +12,19 @@ class CarBookingController extends Controller
 {
     public function index(Request $request)
     {
-        $result = cache()->get('cars');
+        // $result = cache()->get('cars1');
+
+        $result = app(PricelineService::class)->findAvailableCars($request->all());
 
         return inertia('Car/Index', [
-            'cars' => [...array_values($result['result']['itinerary_data'])],
+            'cars' => $result,
             'queryParams' => $request->all(),
         ]);
     }
 
     public function show(Request $request, string $id)
     {
-        $encoded = $request->header('Itinerary-Data');
-        $decoded = json_decode(base64_decode($encoded), true);
-
-        // abort_if(is_null($decoded), 404);
-
         return inertia('Car/Show', [
-            'car' => $decoded,
 
         ]);
     }
@@ -52,36 +48,6 @@ class CarBookingController extends Controller
         // });
     }
 
-    public function findAvailableCars(Request $request)
-    {
-
-        // return cache()->rememberForever('cars1', function () use ($request) {
-        $request->pickup_datetime = Carbon::parse($request->pickup_datetime);
-        $request->dropoff_datetime = Carbon::parse($request->dropoff_datetime);
-
-        $params = [
-
-            'pickup_date' => $request->pickup_datetime->toDateString(),
-            'dropoff_date' => $request->dropoff_datetime->toDateString(),
-            'pickup_time' => $request->pickup_datetime->toTimeString(),
-            'dropoff_time' => $request->dropoff_datetime->toTimeString(),
-            'pickup_code' => $request->pickup_code,
-            'dropoff_code' => $request->dropoff_code,
-            'prepaid_rates' => true,
-        ];
-
-        $response = Http::priceline()->get('/cars/resultsVer', $params);
-
-        $availableHotelsCollection = $response->collect(['getCarResultsV3']);
-
-        if ($availableHotelsCollection->has('error')) {
-            throw new HttpClientException($availableHotelsCollection->get('error')['status'], 500);
-        }
-
-        return $availableHotelsCollection->get('results');
-        // });
-    }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -101,6 +67,6 @@ class CarBookingController extends Controller
 
         // dispatch(new YourFlightBooking($flight));
 
-        return redirect()->back();
+        return redirect()->route('welcome');
     }
 }

@@ -98,6 +98,33 @@ final class PricelineService
                 data_get($getAirFlightRoundTrip, 'results.result.itinerary_data')
             ),
         ];
+    }
 
+    public function findAvailableCars($params)
+    {
+
+        $pickup_datetime = Carbon::parse($params['pickup_datetime']);
+        $dropoff_datetime = Carbon::parse($params['dropoff_datetime']);
+
+        $params = [
+
+            'pickup_date' => $pickup_datetime->toDateString(),
+            'dropoff_date' => $dropoff_datetime->toDateString(),
+            'pickup_time' => $pickup_datetime->toTimeString(),
+            'dropoff_time' => $dropoff_datetime->toTimeString(),
+            'pickup_code' => $params['pickup_code'],
+            'dropoff_code' => $params['dropoff_code'],
+            'prepaid_rates' => true,
+        ];
+
+        $response = Http::priceline()->get('/cars/resultsVer', $params);
+
+        $availableHotelsCollection = $response->collect(['getCarResultsV3']);
+
+        if ($availableHotelsCollection->has('error')) {
+            throw new HttpClientException($availableHotelsCollection->get('error')['status'], 500);
+        }
+
+        return array_values($availableHotelsCollection->get('results')['result_list']);
     }
 }

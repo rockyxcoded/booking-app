@@ -13,10 +13,10 @@ const props = defineProps({
 const flight = ref(props.flight);
 
 onMounted(() => {
-    if (!props.flight) {
-        const decodedData = atob(localStorage.getItem("Itinerary-Data"));
-        flight.value = JSON.parse(decodedData);
-    }
+    // if (!props.flight) {
+    const decodedData = window.atob(localStorage.getItem("Itinerary-Data"));
+    flight.value = JSON.parse(decodedData);
+    // }
 });
 </script>
 
@@ -37,7 +37,7 @@ onMounted(() => {
                 <div></div>
             </div>
             <div class="card mb-4">
-                <h6 class="card-header p-3">Flight Details</h6>
+                <h6 class="card-header p-3">REVIEW & CHECKOUT</h6>
                 <div class="card-body p-5">
                     <div class="mb-3 card">
                         <div class="card-header">Departure</div>

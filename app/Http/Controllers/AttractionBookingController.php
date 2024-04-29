@@ -36,28 +36,28 @@ class AttractionBookingController extends Controller
     public function findAvailableLocations(Request $request)
     {
 
-        return cache()->rememberForever('att-1', function () use ($request) {
-            $response = Http::bookingCom()->get('/attraction/searchLocation', [
-                'query' => $request->city,
-            ]);
+        // return cache()->rememberForever('att-1', function () use ($request) {
+        $response = Http::bookingCom()->get('/attraction/searchLocation', [
+            'query' => $request->city,
+        ]);
 
-            $availableLocations = $response->collect();
+        $availableLocations = $response->collect();
 
-            if ((bool) $availableLocations->get('status') === false) {
-                $message = $availableLocations->get('message');
-                if (is_array($message)) {
-                    throw new HttpClientException($message[0]['query'], 500);
-                }
-                throw new HttpClientException($message, 500);
+        if ((bool) $availableLocations->get('status') === false) {
+            $message = $availableLocations->get('message');
+            if (is_array($message)) {
+                throw new HttpClientException($message[0]['query'], 500);
             }
+            throw new HttpClientException($message, 500);
+        }
 
-            return collect(
-                data_get($availableLocations, 'data.destinations')
-            )->map(fn ($destination) => [
-                'code' => $destination['id'],
-                'name' => "{$destination['cityName']} ({$destination['country']})",
-            ]);
-        });
+        return collect(
+            data_get($availableLocations, 'data.destinations')
+        )->map(fn ($destination) => [
+            'code' => $destination['id'],
+            'name' => "{$destination['cityName']} ({$destination['country']})",
+        ]);
+        // });
     }
 
     public function findAvailableAttractions(Request $request)
