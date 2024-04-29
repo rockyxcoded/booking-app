@@ -20,7 +20,7 @@ import { Link } from "@inertiajs/vue3";
                             <li><Link :href="route('welcome')">Home</Link></li>
 
                             <li>
-                                <a href="services">Services</a>
+                                <a href="/services">Services</a>
 
                                 <div class="menuD">
                                     <ul
@@ -34,7 +34,7 @@ import { Link } from "@inertiajs/vue3";
                                                 >
                                                     <li>
                                                         <a
-                                                            href="ticketing-reservation"
+                                                            href="/ticketing-reservation"
                                                             ><span
                                                                 >Ticketing &amp;
                                                                 Reservation</span
@@ -43,7 +43,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="travel-tour-service"
+                                                            href="/travel-tour-service"
                                                             ><span
                                                                 >Travel Tour
                                                                 Service</span
@@ -52,7 +52,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="hotel-reservation"
+                                                            href="/hotel-reservation"
                                                             ><span
                                                                 >Hotel
                                                                 Reservation</span
@@ -61,7 +61,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="airport-transfers"
+                                                            href="/airport-transfers"
                                                             ><span
                                                                 >Airport
                                                                 Transfers</span
@@ -70,7 +70,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="travel-insurance"
+                                                            href="/travel-insurance"
                                                             ><span
                                                                 >Travel and
                                                                 Health
@@ -80,7 +80,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="cargo-and-shipping-service"
+                                                            href="/cargo-and-shipping-service"
                                                             ><span
                                                                 >Cargo and
                                                                 Shipping
@@ -90,7 +90,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="immigration-services"
+                                                            href="/immigration-services"
                                                             ><span
                                                                 >Immigration
                                                                 Services</span
@@ -99,7 +99,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="immigration-protocol"
+                                                            href="/immigration-protocol"
                                                             ><span
                                                                 >Immigration and
                                                                 Protocol</span
@@ -108,7 +108,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="visa-counseling"
+                                                            href="/visa-counseling"
                                                             ><span
                                                                 >Visa
                                                                 Counseling</span
@@ -117,7 +117,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="charter-aircraft-services"
+                                                            href="/charter-aircraft-services"
                                                             ><span
                                                                 >Charter
                                                                 Aircraft
@@ -127,7 +127,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="air-ambulance-service"
+                                                            href="/air-ambulance-service"
                                                             ><span
                                                                 >Air Ambulance
                                                                 Service</span
@@ -142,7 +142,7 @@ import { Link } from "@inertiajs/vue3";
                                                 >
                                                     <li>
                                                         <a
-                                                            href="event-management"
+                                                            href="/event-management"
                                                             ><span
                                                                 >Event
                                                                 Management</span
@@ -151,7 +151,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="entertainment-promotion"
+                                                            href="/entertainment-promotion"
                                                             ><span
                                                                 >Entertainment
                                                                 Promotion</span
@@ -160,7 +160,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="conference-fairs"
+                                                            href="/conference-fairs"
                                                             ><span
                                                                 >Conference
                                                                 &amp;
@@ -170,7 +170,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="management-retreat"
+                                                            href="/management-retreat"
                                                             ><span
                                                                 >Management
                                                                 Retreat</span
@@ -179,7 +179,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="bus-hire-service"
+                                                            href="/bus-hire-service"
                                                             ><span
                                                                 >Bus and Car
                                                                 Hire
@@ -189,7 +189,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="boat-cruise-service"
+                                                            href="/boat-cruise-service"
                                                             ><span
                                                                 >Boat Cruise
                                                                 Service</span
@@ -198,7 +198,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="rent-a-car-service"
+                                                            href="/rent-a-car-service"
                                                             ><span
                                                                 >Rent-a-Car
                                                                 Service</span
@@ -207,7 +207,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="medical-health-tourism"
+                                                            href="/medical-health-tourism"
                                                             ><span
                                                                 >Medical-Health
                                                                 Tourism</span
@@ -216,7 +216,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="school-transportation-service"
+                                                            href="/school-transportation-service"
                                                             ><span
                                                                 >School
                                                                 Transportation
@@ -226,7 +226,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="second-country-citizenship-through-investment"
+                                                            href="/second-country-citizenship-through-investment"
                                                             ><span
                                                                 >Second Country
                                                                 Citizenship
@@ -248,7 +248,7 @@ import { Link } from "@inertiajs/vue3";
                                         style="min-width: 250px !important"
                                     >
                                         <li>
-                                            <a href="ticketing-reservation"
+                                            <a href="/ticketing-reservation"
                                                 ><span
                                                     >Ticketing &amp;
                                                     Reservation</span
@@ -256,28 +256,28 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="travel-tour-service"
+                                            <a href="/travel-tour-service"
                                                 ><span
                                                     >Travel Tour Service</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="hotel-reservation"
+                                            <a href="/hotel-reservation"
                                                 ><span
                                                     >Hotel Reservation</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="airport-transfers"
+                                            <a href="/airport-transfers"
                                                 ><span
                                                     >Airport Transfers</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="travel-insurance"
+                                            <a href="/travel-insurance"
                                                 ><span
                                                     >Travel and Health
                                                     Insurance</span
@@ -285,7 +285,8 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="cargo-and-shipping-service"
+                                            <a
+                                                href="/cargo-and-shipping-service"
                                                 ><span
                                                     >Cargo and Shipping
                                                     Service</span
@@ -293,14 +294,14 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="immigration-services"
+                                            <a href="/immigration-services"
                                                 ><span
                                                     >Immigration Services</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="immigration-protocol"
+                                            <a href="/immigration-protocol"
                                                 ><span
                                                     >Immigration and
                                                     Protocol</span
@@ -308,12 +309,12 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="visa-counseling"
+                                            <a href="/visa-counseling"
                                                 ><span>Visa Counseling</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="charter-aircraft-services"
+                                            <a href="/charter-aircraft-services"
                                                 ><span
                                                     >Charter Aircraft
                                                     Services</span
@@ -321,21 +322,21 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="air-ambulance-service"
+                                            <a href="/air-ambulance-service"
                                                 ><span
                                                     >Air Ambulance Service</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="event-management"
+                                            <a href="/event-management"
                                                 ><span
                                                     >Event Management</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="entertainment-promotion"
+                                            <a href="/entertainment-promotion"
                                                 ><span
                                                     >Entertainment
                                                     Promotion</span
@@ -343,7 +344,7 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="conference-fairs"
+                                            <a href="/conference-fairs"
                                                 ><span
                                                     >Conference &amp;
                                                     Fairs</span
@@ -351,14 +352,14 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="management-retreat"
+                                            <a href="/management-retreat"
                                                 ><span
                                                     >Management Retreat</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="bus-hire-service"
+                                            <a href="/bus-hire-service"
                                                 ><span
                                                     >Bus and Car Hire
                                                     Service</span
@@ -366,21 +367,21 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="boat-cruise-service"
+                                            <a href="/boat-cruise-service"
                                                 ><span
                                                     >Boat Cruise Service</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="rent-a-car-service"
+                                            <a href="/rent-a-car-service"
                                                 ><span
                                                     >Rent-a-Car Service</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="medical-health-tourism"
+                                            <a href="/medical-health-tourism"
                                                 ><span
                                                     >Medical-Health
                                                     Tourism</span
@@ -389,7 +390,7 @@ import { Link } from "@inertiajs/vue3";
                                         </li>
                                         <li>
                                             <a
-                                                href="school-transportation-service"
+                                                href="/school-transportation-service"
                                                 ><span
                                                     >School Transportation
                                                     Service</span
@@ -398,7 +399,7 @@ import { Link } from "@inertiajs/vue3";
                                         </li>
                                         <li>
                                             <a
-                                                href="second-country-citizenship-through-investment"
+                                                href="/second-country-citizenship-through-investment"
                                                 ><span
                                                     >Second Country Citizenship
                                                     Through Investment</span
@@ -406,7 +407,7 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="mices"
+                                            <a href="/mices"
                                                 ><span
                                                     >Meeting Incentive
                                                     Conference Exhibition
@@ -419,7 +420,7 @@ import { Link } from "@inertiajs/vue3";
                             </li>
 
                             <li>
-                                <a href="tours">Tours</a>
+                                <a href="/tours">Tours</a>
 
                                 <div class="menuD">
                                     <ul
@@ -433,7 +434,7 @@ import { Link } from "@inertiajs/vue3";
                                                 >
                                                     <li>
                                                         <a
-                                                            href="educational-tours-and-school-holiday-trips"
+                                                            href="/educational-tours-and-school-holiday-trips"
                                                             >Educational Tours
                                                             and School Holiday
                                                             Trips</a
@@ -441,7 +442,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="individual-personal-tours"
+                                                            href="/individual-personal-tours"
                                                             ><span
                                                                 >Individual
                                                                 Personal
@@ -451,7 +452,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="family-and-holiday-tours"
+                                                            href="/family-and-holiday-tours"
                                                             ><span
                                                                 >Family
                                                                 Tours</span
@@ -460,7 +461,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="honeymoon-tours"
+                                                            href="/honeymoon-tours"
                                                             ><span
                                                                 >Honeymoon
                                                                 Tours</span
@@ -469,7 +470,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="free-city-student-tours"
+                                                            href="/free-city-student-tours"
                                                             ><span
                                                                 >Free City
                                                                 Student
@@ -479,7 +480,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="school-leadership-tours"
+                                                            href="/school-leadership-tours"
                                                             ><span
                                                                 >School
                                                                 Leadership
@@ -489,7 +490,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="incentive-tours"
+                                                            href="/incentive-tours"
                                                             ><span
                                                                 >Incentive
                                                                 Tours</span
@@ -497,7 +498,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="group-tours"
+                                                        <a href="/group-tours"
                                                             ><span
                                                                 >Group
                                                                 Tours</span
@@ -505,7 +506,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="language-tours"
+                                                        <a
+                                                            href="/language-tours"
                                                             ><span
                                                                 >Language
                                                                 Tours</span
@@ -514,7 +516,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="parents-bonding-retreats"
+                                                            href="/parents-bonding-retreats"
                                                             ><span
                                                                 >Parents Bonding
                                                                 Retreats</span
@@ -529,7 +531,7 @@ import { Link } from "@inertiajs/vue3";
                                                 >
                                                     <li>
                                                         <a
-                                                            href="adventure-and-expedition-tours"
+                                                            href="/adventure-and-expedition-tours"
                                                             ><span
                                                                 >Adventure and
                                                                 Expedition
@@ -539,7 +541,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="pilgrimage-and-religious-tours"
+                                                            href="/pilgrimage-and-religious-tours"
                                                             ><span
                                                                 >Pilgrimage and
                                                                 Religious Tours
@@ -548,7 +550,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="christian-group-retreat"
+                                                            href="/christian-group-retreat"
                                                             ><span
                                                                 >Christian Group
                                                                 Retreat</span
@@ -557,7 +559,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="boat-cruise-service"
+                                                            href="/boat-cruise-service"
                                                             ><span
                                                                 >Boat Cruise
                                                                 Tours</span
@@ -565,7 +567,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="cultural-tours"
+                                                        <a
+                                                            href="/cultural-tours"
                                                             ><span
                                                                 >Cultural
                                                                 Tours</span
@@ -573,7 +576,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="festival-tours"
+                                                        <a
+                                                            href="/festival-tours"
                                                             ><span
                                                                 >Festival
                                                                 Tours</span
@@ -581,7 +585,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="carnival-tours"
+                                                        <a
+                                                            href="/carnival-tours"
                                                             ><span
                                                                 >Carnival
                                                                 Tours</span
@@ -589,7 +594,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="singles-tours"
+                                                        <a href="/singles-tours"
                                                             ><span
                                                                 >Singles
                                                                 Tours</span
@@ -597,7 +602,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="shopping-tours"
+                                                        <a
+                                                            href="/shopping-tours"
                                                             ><span
                                                                 >Shopping
                                                                 Tours</span
@@ -606,7 +612,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="beach-holiday-tours"
+                                                            href="/beach-holiday-tours"
                                                             ><span
                                                                 >Beach Holiday
                                                                 Tours</span
@@ -621,7 +627,7 @@ import { Link } from "@inertiajs/vue3";
                                                 >
                                                     <li>
                                                         <a
-                                                            href="winter-vacation"
+                                                            href="/winter-vacation"
                                                             ><span
                                                                 >Winter
                                                                 Vacation</span
@@ -629,7 +635,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="summer-tour"
+                                                        <a href="/summer-tour"
                                                             ><span
                                                                 >Summer
                                                                 Tour</span
@@ -638,7 +644,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="weekend-vacations"
+                                                            href="/weekend-vacations"
                                                             ><span
                                                                 >Weekend
                                                                 Vacations</span
@@ -646,7 +652,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="jubilee-tours"
+                                                        <a href="/jubilee-tours"
                                                             ><span
                                                                 >Jubilee
                                                                 Tours</span
@@ -654,7 +660,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="seniors-tours"
+                                                        <a href="/seniors-tours"
                                                             ><span
                                                                 >Seniors
                                                                 Tours</span
@@ -662,7 +668,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="sports-tours"
+                                                        <a href="/sports-tours"
                                                             ><span
                                                                 >Sports
                                                                 Tours</span
@@ -670,7 +676,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="nature-tours"
+                                                        <a href="/nature-tours"
                                                             ><span
                                                                 >Nature
                                                                 Tours</span
@@ -679,7 +685,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <!--li><a href='getaway-packages'><span>Getaway Packages</span></a></li-->
                                                     <li>
-                                                        <a href="cruise-tours"
+                                                        <a href="/cruise-tours"
                                                             ><span
                                                                 >Cruise
                                                                 Tours</span
@@ -687,7 +693,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="safari-tours"
+                                                        <a href="/safari-tours"
                                                             ><span
                                                                 >Safari
                                                                 Tours</span
@@ -696,7 +702,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="historical-ancient-tours"
+                                                            href="/historical-ancient-tours"
                                                             ><span
                                                                 >Historical and
                                                                 Ancient
@@ -706,7 +712,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="travelability-tours"
+                                                            href="/travelability-tours"
                                                             ><span
                                                                 >Travelability
                                                                 Tours</span
@@ -721,7 +727,7 @@ import { Link } from "@inertiajs/vue3";
                                                     class="multi-column-dropdown"
                                                 >
                                                     <li>
-                                                        <a href="reunion-tours"
+                                                        <a href="/reunion-tours"
                                                             ><span
                                                                 >Reunion
                                                                 Tours</span
@@ -730,7 +736,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="civilization-and-archeological-tours"
+                                                            href="/civilization-and-archeological-tours"
                                                             ><span
                                                                 >Civilization
                                                                 and
@@ -740,7 +746,8 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="heritage-tours"
+                                                        <a
+                                                            href="/heritage-tours"
                                                             ><span
                                                                 >Heritage
                                                                 Tours</span
@@ -749,7 +756,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="city-break-tours"
+                                                            href="/city-break-tours"
                                                             ><span
                                                                 >City Break
                                                                 Tours</span
@@ -757,7 +764,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="luxury-tours"
+                                                        <a href="/luxury-tours"
                                                             ><span
                                                                 >Luxury
                                                                 Tours</span
@@ -765,7 +772,7 @@ import { Link } from "@inertiajs/vue3";
                                                         >
                                                     </li>
                                                     <li>
-                                                        <a href="leisure-tours"
+                                                        <a href="/leisure-tours"
                                                             ><span
                                                                 >Leisure
                                                                 Tours</span
@@ -776,7 +783,7 @@ import { Link } from "@inertiajs/vue3";
                                                     <!--li><a href='baby-shower-experiential'><span>Baby Shower Experiential</span></a></li-->
                                                     <li>
                                                         <a
-                                                            href="multi-country-tours"
+                                                            href="/multi-country-tours"
                                                             ><span
                                                                 >Multi Country
                                                                 Tours</span
@@ -785,7 +792,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="boat-cruise-tours"
+                                                            href="/boat-cruise-tours"
                                                             ><span
                                                                 >Boat Cruise
                                                                 Tours</span
@@ -794,7 +801,7 @@ import { Link } from "@inertiajs/vue3";
                                                     </li>
                                                     <li>
                                                         <a
-                                                            href="wellness-spa-lifestyle-tours"
+                                                            href="/wellness-spa-lifestyle-tours"
                                                             ><span
                                                                 >Wellness Spa
                                                                 Lifestyle
@@ -815,13 +822,13 @@ import { Link } from "@inertiajs/vue3";
                                     >
                                         <li>
                                             <a
-                                                href="educational-tours-and-school-holiday-trips"
+                                                href="/educational-tours-and-school-holiday-trips"
                                                 >Educational Tours and School
                                                 Holiday Trips</a
                                             >
                                         </li>
                                         <li>
-                                            <a href="individual-personal-tours"
+                                            <a href="/individual-personal-tours"
                                                 ><span
                                                     >Individual Personal
                                                     Tours</span
@@ -829,17 +836,17 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="family-and-holiday-tours"
+                                            <a href="/family-and-holiday-tours"
                                                 ><span>Family Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="honeymoon-tours"
+                                            <a href="/honeymoon-tours"
                                                 ><span>Honeymoon Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="free-city-student-tours"
+                                            <a href="/free-city-student-tours"
                                                 ><span
                                                     >Free City Student
                                                     Tours</span
@@ -847,7 +854,7 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="school-leadership-tours"
+                                            <a href="/school-leadership-tours"
                                                 ><span
                                                     >School Leadership
                                                     Tours</span
@@ -855,22 +862,22 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="incentive-tours"
+                                            <a href="/incentive-tours"
                                                 ><span>Incentive Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="group-tours"
+                                            <a href="/group-tours"
                                                 ><span>Group Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="language-tours"
+                                            <a href="/language-tours"
                                                 ><span>Language Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="parents-bonding-retreats"
+                                            <a href="/parents-bonding-retreats"
                                                 ><span
                                                     >Parents Bonding
                                                     Retreats</span
@@ -879,7 +886,7 @@ import { Link } from "@inertiajs/vue3";
                                         </li>
                                         <li>
                                             <a
-                                                href="adventure-and-expedition-tours"
+                                                href="/adventure-and-expedition-tours"
                                                 ><span
                                                     >Adventure and Expedition
                                                     Tours</span
@@ -888,7 +895,7 @@ import { Link } from "@inertiajs/vue3";
                                         </li>
                                         <li>
                                             <a
-                                                href="pilgrimage-and-religious-tours"
+                                                href="/pilgrimage-and-religious-tours"
                                                 ><span
                                                     >Pilgrimage and Religious
                                                     Tours</span
@@ -896,7 +903,7 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="christian-group-retreat"
+                                            <a href="/christian-group-retreat"
                                                 ><span
                                                     >Christian Group
                                                     Retreat</span
@@ -904,94 +911,94 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="boat-cruise-tours"
+                                            <a href="/boat-cruise-tours"
                                                 ><span
                                                     >Boat Cruise Tours</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="cultural-tours"
+                                            <a href="/cultural-tours"
                                                 ><span>Cultural Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="festival-tours"
+                                            <a href="/festival-tours"
                                                 ><span>Festival Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="carnival-tours"
+                                            <a href="/carnival-tours"
                                                 ><span>Carnival Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="singles-tours"
+                                            <a href="/singles-tours"
                                                 ><span>Singles Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="shopping-tours"
+                                            <a href="/shopping-tours"
                                                 ><span>Shopping Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="beach-holiday-tours"
+                                            <a href="/beach-holiday-tours"
                                                 ><span
                                                     >Beach Holiday Tours</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="winter-vacation"
+                                            <a href="/winter-vacation"
                                                 ><span>Winter Vacation</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="summer-tour"
+                                            <a href="/summer-tour"
                                                 ><span>Summer Tour</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="weekend-vacations"
+                                            <a href="/weekend-vacations"
                                                 ><span
                                                     >Weekend Vacations</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="jubilee-tours"
+                                            <a href="/jubilee-tours"
                                                 ><span>Jubilee Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="seniors-tours"
+                                            <a href="/seniors-tours"
                                                 ><span>Seniors Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="sports-tours"
+                                            <a href="/sports-tours"
                                                 ><span>Sports Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="nature-tours"
+                                            <a href="/nature-tours"
                                                 ><span>Nature Tours</span></a
                                             >
                                         </li>
                                         <!--li><a href='getaway-packages'><span>Getaway Packages</span></a></li-->
                                         <li>
-                                            <a href="cruise-tours"
+                                            <a href="/cruise-tours"
                                                 ><span>Cruise Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="safari-tours"
+                                            <a href="/safari-tours"
                                                 ><span>Safari Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="historical-ancient-tours"
+                                            <a href="/historical-ancient-tours"
                                                 ><span
                                                     >Historical and Ancient
                                                     Tours</span
@@ -999,13 +1006,13 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="reunion-tours"
+                                            <a href="/reunion-tours"
                                                 ><span>Reunion Tours</span></a
                                             >
                                         </li>
                                         <li>
                                             <a
-                                                href="civilization-and-archeological-tours"
+                                                href="/civilization-and-archeological-tours"
                                                 ><span
                                                     >Civilization and
                                                     Archeological Tours</span
@@ -1013,38 +1020,38 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="heritage-tours"
+                                            <a href="/heritage-tours"
                                                 ><span>Heritage Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="city-break-tours"
+                                            <a href="/city-break-tours"
                                                 ><span
                                                     >City Break Tours</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="luxury-tours"
+                                            <a href="/luxury-tours"
                                                 ><span>Luxury Tours</span></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="leisure-tours"
+                                            <a href="/leisure-tours"
                                                 ><span>Leisure Tours</span></a
                                             >
                                         </li>
                                         <!--li><a href='church-group-tours'><span>Church Group Tours</span></a></li-->
                                         <!--li><a href='baby-shower-experiential'><span>Baby Shower Experiential</span></a></li-->
                                         <li>
-                                            <a href="multi-country-tours"
+                                            <a href="/multi-country-tours"
                                                 ><span
                                                     >Multi Country Tours</span
                                                 ></a
                                             >
                                         </li>
                                         <li>
-                                            <a href="boat-cruise-tours"
+                                            <a href="/boat-cruise-tours"
                                                 ><span
                                                     >Boat Cruise Tours</span
                                                 ></a
@@ -1052,7 +1059,7 @@ import { Link } from "@inertiajs/vue3";
                                         </li>
                                         <li>
                                             <a
-                                                href="wellness-spa-lifestyle-tours"
+                                                href="/wellness-spa-lifestyle-tours"
                                                 ><span
                                                     >Wellness Spa Lifestyle
                                                     Tours</span
@@ -1060,7 +1067,7 @@ import { Link } from "@inertiajs/vue3";
                                             >
                                         </li>
                                         <li>
-                                            <a href="travelability-tours"
+                                            <a href="/travelability-tours"
                                                 ><span
                                                     >Travelability Tours</span
                                                 ></a
@@ -1070,25 +1077,25 @@ import { Link } from "@inertiajs/vue3";
                                 </div>
                             </li>
                             <li>
-                                <a href="gallery">Gallery</a>
+                                <a href="/gallery">Gallery</a>
                                 <ul
                                     class="dropdown"
                                     style="min-width: 250px !important"
                                 >
                                     <li>
-                                        <a href="photo-gallery"
+                                        <a href="/photo-gallery"
                                             ><span>Tour Photos</span></a
                                         >
                                     </li>
                                     <li>
-                                        <a href="tour-videos"
+                                        <a href="/tour-videos"
                                             ><span>Tour Videos</span></a
                                         >
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="products">Products</a>
+                                <a href="/products">Products</a>
                                 <ul
                                     class="dropdown"
                                     style="min-width: 250px !important"
@@ -1096,7 +1103,7 @@ import { Link } from "@inertiajs/vue3";
                                     <!--li><a href='corporate-booking-tool-cbt'><span>Corporate Booking Tool CBT</span></a></li-->
                                     <li>
                                         <a
-                                            href="corporate-and-management-retreats"
+                                            href="/corporate-and-management-retreats"
                                             ><span
                                                 >Corporate and Management
                                                 Retreats</span
@@ -1104,7 +1111,7 @@ import { Link } from "@inertiajs/vue3";
                                         >
                                     </li>
                                     <li>
-                                        <a href="mices"
+                                        <a href="/mices"
                                             ><span
                                                 >MICES - Meeting Incentive
                                                 Conference Exhibition
@@ -1113,7 +1120,7 @@ import { Link } from "@inertiajs/vue3";
                                         >
                                     </li>
                                     <li>
-                                        <a href="work-study-live-abroad"
+                                        <a href="/work-study-live-abroad"
                                             ><span
                                                 >Work Study and Live
                                                 Abroad</span
@@ -1121,14 +1128,14 @@ import { Link } from "@inertiajs/vue3";
                                         >
                                     </li>
                                     <li>
-                                        <a href="internship-abroad"
+                                        <a href="/internship-abroad"
                                             ><span>Internship Abroad</span></a
                                         >
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="aboutus">About Us</a></li>
-                            <li><a href="contactus">Contact Us</a></li>
+                            <li><a href="/aboutus">About Us</a></li>
+                            <li><a href="/contactus">Contact Us</a></li>
                         </ul>
                     </nav>
                 </div>

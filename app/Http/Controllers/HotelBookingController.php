@@ -13,7 +13,14 @@ class HotelBookingController extends Controller
     public function index(Request $request)
     {
         // $result = cache()->get('hotels');
-        $result = app(PricelineService::class)->findAvailableHotels($request->all());
+
+        try {
+            $result = app(PricelineService::class)->findAvailableHotels($request->all());
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+
+            return back();
+        }
 
         return inertia('Hotel/Index', [
             'hotels' => $result,

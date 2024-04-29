@@ -14,13 +14,14 @@ return new class extends Migration
 
         Schema::create('flight_bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('location');
             $table->string('destination');
-            $table->datetime('departure_date');
-            $table->datetime('return_date');
+            $table->datetime('departure_date')->nullable();
+            $table->datetime('return_date')->nullable();
             $table->string('cabin_class');
             $table->string('trip_type')->nullable();
             $table->unsignedInteger('adults')->nullable();

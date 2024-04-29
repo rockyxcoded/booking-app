@@ -64,7 +64,8 @@ Route::get('/', function () {
 
 // Redirect 404 to home
 Route::fallback(function () {
-    return redirect('/');
+    // return redirect('/');
+    return inertia('Blank');
 });
 
 Route::get('/migrate', function () {

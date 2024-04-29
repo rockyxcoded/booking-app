@@ -10,10 +10,12 @@ const props = defineProps({
     },
 });
 
+const container = ref("container");
 const hotel = ref(props.hotel);
 
 onMounted(() => {
-    // console.log(props.hotel);
+    container.value.scrollIntoView();
+    console.log(props.hotel);
 });
 </script>
 
@@ -21,7 +23,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Hotel Details" />
 
-        <div class="container">
+        <div class="container" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
@@ -34,7 +36,7 @@ onMounted(() => {
                 <div></div>
             </div>
             <div class="card mb-4">
-                <!-- <h6 class="card-header p-3">Reserve a room</h6> -->
+                <h6 class="card-header p-3">Reserve a room</h6>
                 <div class="card-body p-4">
                     <div
                         class="row row-cols-1 row-cols-md-4 g-2 flex-nowrap"
@@ -50,7 +52,7 @@ onMounted(() => {
                                 <img
                                     :src="photo_data"
                                     class="card-img-top"
-                                    alt=""
+                                    style="height: 300px !important"
                                 />
                             </div>
                         </div>
@@ -66,6 +68,17 @@ onMounted(() => {
                     </div>
                     <div class="card-text">
                         {{ hotel.hotel_description }}
+                    </div>
+                    <hr />
+                    <div
+                        class="text-muted d-flex justify-content-between"
+                        v-for="amenity in hotel?.amenity_data"
+                    >
+                        <span>{{ amenity.name }}</span>
+                        <i
+                            class="fa fa-check-circle text-success"
+                            aria-hidden="true"
+                        ></i>
                     </div>
                 </div>
                 <div class="card-footer p-3">

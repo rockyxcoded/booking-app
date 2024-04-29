@@ -7,8 +7,10 @@ import { onMounted, toRaw, ref, computed } from "vue";
 const props = defineProps({});
 
 const car = ref([]);
+const container = ref("container");
 
 onMounted(() => {
+    container.value.scrollIntoView();
     const decodedData = window.atob(localStorage.getItem("selected-car"));
     car.value = JSON.parse(decodedData);
     console.log(car.value);
@@ -19,7 +21,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Flight Details" />
 
-        <div class="container contain">
+        <div class="container contain" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">

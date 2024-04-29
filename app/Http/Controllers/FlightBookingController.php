@@ -14,10 +14,20 @@ class FlightBookingController extends Controller
     {
         // $result = cache()->get('flights');
 
-        $result = app(PricelineService::class)->getAirFlightRoundTrip($request->all());
+        try {
+            $result = match ($request->input('trip_type')) {
+                'round' => app(PricelineService::class)->getAirFlightRoundTrip($request->all()),
+                'oneway' => app(PricelineService::class)->getAirFlightDepartures($request->all()),
+            };
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+
+            return back();
+        }
 
         return inertia('Flight/Index', [
-            'allFlights' => array_values($result['result']['itinerary_data']),
+            // 'allFlights' => array_values($result['result']['itinerary_data']),
+            'allFlights' => $result,
             'queryParams' => $request->all(),
         ]);
     }
@@ -44,7 +54,7 @@ class FlightBookingController extends Controller
         // return cache()->rememberForever('suggestswsswww', function () use ($request) {
         $response = Http::withHeaders([
             'X-RapidAPI-Host' => 'priceline-com-provider.p.rapidapi.com',
-            'X-RapidAPI-Key' => 'e8b9f5e2d7msh0d06325056be196p1bf10fjsn7291c489bdcd',
+            'X-RapidAPI-Key' => '9ea3b425bamsh20daaa5ec0b7764p1bf971jsnae9291d555da',
         ])->get('https://priceline-com-provider.p.rapidapi.com/v1/flights/locations', [
             'name' => $request->input('query'),
         ]);
@@ -75,17 +85,17 @@ class FlightBookingController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'location' => 'required',
-            'destination' => 'required',
-            'departure_date' => 'required',
-            'return_date' => 'required',
-            'cabin_class' => 'required',
-            'trip_type' => 'required',
-            'adults' => 'required',
-            'children' => 'required',
-            'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'location' => 'nullable',
+            'destination' => 'nullable',
+            'departure_date' => 'nullable',
+            // 'return_date' => 'nullable',
+            'cabin_class' => 'nullable',
+            'trip_type' => 'nullable',
+            'adults' => 'nullable',
+            'children' => 'nullable',
+            // 'name' => 'nullable',
+            'phone' => 'nullable',
+            'email' => 'nullable',
             'flight' => 'nullable',
         ]);
 

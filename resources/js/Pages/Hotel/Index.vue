@@ -15,7 +15,7 @@ const props = defineProps({
         type: Object,
     },
 });
-
+const container = ref("container");
 const searchQ = ref("");
 
 const hotels = computed(() => {
@@ -39,7 +39,7 @@ const selectHotel = (hotel) => {
 };
 
 onMounted(() => {
-    console.log(props.hotels);
+    container.value.scrollIntoView();
 });
 </script>
 
@@ -47,7 +47,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Search Flight" />
 
-        <div class="container">
+        <div class="container" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
@@ -74,7 +74,7 @@ onMounted(() => {
                             <img
                                 :src="`https:${hotel.thumbnail_hq.three_hundred_square}`"
                                 class="img-fluid rounded-start"
-                                style="width: 100%"
+                                style="width: 100%; max-height: 200px"
                             />
                         </div>
                         <div class="col-md-9">

@@ -11,12 +11,14 @@ const props = defineProps({
 });
 
 const flight = ref(props.flight);
+const container = ref("container");
 
 onMounted(() => {
-    // if (!props.flight) {
+    container.value.scrollIntoView();
     const decodedData = window.atob(localStorage.getItem("Itinerary-Data"));
     flight.value = JSON.parse(decodedData);
-    // }
+
+    console.log(flight.value);
 });
 </script>
 
@@ -24,7 +26,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Flight Details" />
 
-        <div class="container contain">
+        <div class="container contain" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">
@@ -105,7 +107,7 @@ onMounted(() => {
                         </div>
                     </div>
 
-                    <div class="mb-3 card">
+                    <div class="mb-3 card" v-if="flight?.slice_data?.slice_1">
                         <div class="card-header">Return</div>
                         <div class="card-body">
                             <div class="row align-items-center">

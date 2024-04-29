@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Http::macro('priceline', function () {
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'priceline-com-provider.p.rapidapi.com',
-                'X-RapidAPI-Key' => 'e8b9f5e2d7msh0d06325056be196p1bf10fjsn7291c489bdcd',
+                'X-RapidAPI-Key' => '9ea3b425bamsh20daaa5ec0b7764p1bf971jsnae9291d555da',
             ])->baseUrl('https://priceline-com-provider.p.rapidapi.com/v2');
         });
 

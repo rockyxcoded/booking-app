@@ -17,6 +17,7 @@ const props = defineProps({
 });
 
 const searchQ = ref("");
+const container = ref("container");
 
 const cars = computed(() => {
     const q = searchQ.value.toLowerCase();
@@ -43,6 +44,7 @@ const selectCar = (car) => {
 };
 
 onMounted(() => {
+    container.value.scrollIntoView();
     console.log(props.cars);
 });
 </script>
@@ -51,7 +53,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Search Cars" />
 
-        <div class="container">
+        <div class="container" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">

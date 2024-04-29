@@ -14,7 +14,13 @@ class CarBookingController extends Controller
     {
         // $result = cache()->get('cars1');
 
-        $result = app(PricelineService::class)->findAvailableCars($request->all());
+        try {
+            $result = app(PricelineService::class)->findAvailableCars($request->all());
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+
+            return back();
+        }
 
         return inertia('Car/Index', [
             'cars' => $result,

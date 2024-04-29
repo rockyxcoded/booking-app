@@ -17,6 +17,7 @@ const props = defineProps({
 });
 
 const searchQ = ref("");
+const container = ref("container");
 
 const flights = computed(() => {
     const q = searchQ.value.toLowerCase();
@@ -47,6 +48,7 @@ const selectFlight = (itinerary_data) => {
 };
 
 onMounted(() => {
+    container.value.scrollIntoView();
     // console.log(props.queryParams);
 });
 </script>
@@ -55,7 +57,7 @@ onMounted(() => {
     <GuestLayout>
         <Head title="Search Flight" />
 
-        <div class="container">
+        <div class="container" ref="container">
             <div class="my-3 d-flex justify-content-between">
                 <nav aria-label="breadcrumb ">
                     <ol class="breadcrumb">

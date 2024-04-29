@@ -30,7 +30,9 @@ final class PricelineService
         $getHotelHotelDetails = $response->collect('getHotelHotelDetails');
 
         if ($getHotelHotelDetails->has('error')) {
-            throw new HttpClientException($getHotelHotelDetails->get('error')['status'], 500);
+            $splitted = explode(':', $getHotelHotelDetails->get('error')['status']);
+            $message = end($splitted);
+            throw new HttpClientException($message, 500);
         }
 
         return data_get($getHotelHotelDetails, 'results.hotel_data.hotel_0');
@@ -54,17 +56,22 @@ final class PricelineService
 
         ]);
 
+        if ($response->json('message')) {
+            logger()->error($response->json('message'));
+            throw new HttpClientException('An error occurred, Contact support', 500);
+        }
+
         $availableHotelsCollection = $response->collect(['getHotelExpress.Results']);
 
         if ($availableHotelsCollection->has('error')) {
-            throw new HttpClientException($availableHotelsCollection->get('error')['status'], 500);
+            $splitted = explode(':', $availableHotelsCollection->get('error')['status']);
+            $message = end($splitted);
+            throw new HttpClientException($message, 500);
         }
 
-        return [
-            ...array_values(
-                data_get($availableHotelsCollection, 'results.rate_data')
-            ),
-        ];
+        return array_values(
+            data_get($availableHotelsCollection, 'results.rate_data')
+        );
 
     }
 
@@ -90,14 +97,43 @@ final class PricelineService
         $getAirFlightRoundTrip = $response->collect('getAirFlightRoundTrip');
 
         if ($getAirFlightRoundTrip->has('error')) {
-            throw new HttpClientException($getAirFlightRoundTrip->get('error')['status'], 500);
+            $splitted = explode(':', $getAirFlightRoundTrip->get('error')['status']);
+            $message = end($splitted);
+            throw new HttpClientException($message, 500);
         }
 
-        return [
-            ...array_values(
-                data_get($getAirFlightRoundTrip, 'results.result.itinerary_data')
-            ),
-        ];
+        return array_values(
+            data_get($getAirFlightRoundTrip, 'results.result.itinerary_data')
+        );
+    }
+
+    public function getAirFlightDepartures(array $params)
+    {
+
+        $params['return_date'] = Carbon::parse($params['return_date'])->toDateString();
+        $params['departure_date'] = Carbon::parse($params['departure_date'])->toDateString();
+
+        $response = Http::priceline()->get('/flight/departures', [
+            'adults' => $params['adults'],
+            'sid' => 'iSiX63m',
+            'children' => $params['children'],
+            'cabin_class' => strtolower($params['cabin_class']),
+            'origin_airport_code' => $params['location'],
+            'destination_airport_code' => $params['destination'],
+            'departure_date' => $params['departure_date'],
+        ]);
+
+        $getAirFlightDepartures = $response->collect('getAirFlightDepartures');
+
+        if ($getAirFlightDepartures->has('error')) {
+            $splitted = explode(':', $getAirFlightDepartures->get('error')['status']);
+            $message = end($splitted);
+            throw new HttpClientException($message, 500);
+        }
+
+        return array_values(
+            data_get($getAirFlightDepartures, 'results.result.itinerary_data')
+        );
     }
 
     public function findAvailableCars($params)
@@ -122,9 +158,13 @@ final class PricelineService
         $availableHotelsCollection = $response->collect(['getCarResultsV3']);
 
         if ($availableHotelsCollection->has('error')) {
-            throw new HttpClientException($availableHotelsCollection->get('error')['status'], 500);
+            $splitted = explode(':', $availableHotelsCollection->get('error')['status']);
+            $message = end($splitted);
+            throw new HttpClientException($message, 500);
         }
 
-        return array_values($availableHotelsCollection->get('results')['result_list']);
+        return array_values(
+            $availableHotelsCollection->get('results')['result_list']
+        );
     }
 }

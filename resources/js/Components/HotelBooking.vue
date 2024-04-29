@@ -31,7 +31,7 @@ const bookHotel = () => {
             closeModal();
             Swal.fire({
                 title: "Success!",
-                text: "Thank you for booking with Zenith Travels, your booking details have been sent to your email",
+                text: "Thank you for booking with Zenith Travels, your checkout and payment details have been sent to your email. *Note that Bookings not paid for in 48 hours will be canceled. ",
                 icon: "success",
                 confirmButtonText: "Ok",
             });

@@ -2,9 +2,34 @@
 import HeaderMenu from "@/Components/HeaderMenu.vue";
 import SearchWidget from "@/Components/SearchWidget.vue";
 import { onMounted } from "vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, router, usePage } from "@inertiajs/vue3";
+
+const page = usePage();
 
 onMounted(() => {
+    router.on("finish", () => {
+        const flashObject = page.props.flash;
+        const flashKey = Object.keys(flashObject).filter(
+            (key) => flashObject[key] != undefined
+        )[0];
+
+        if (flashKey == undefined) return;
+
+        Swal.fire({
+            title: flashKey,
+            text: flashObject[flashKey],
+            icon: flashKey,
+            // toast: true,
+            // position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            },
+        });
+    });
     (function ($) {
         "use strict";
 

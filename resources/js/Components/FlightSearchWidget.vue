@@ -36,7 +36,7 @@ const form = useForm(store.form);
             />
             <label class="form-check-label" for="inlineRadio2">One Way</label>
         </div>
-        <div class="form-check form-check-inline">
+        <!-- <div class="form-check form-check-inline">
             <input
                 class="form-check-input"
                 type="radio"
@@ -46,7 +46,7 @@ const form = useForm(store.form);
                 v-model="store.form.trip_type"
             />
             <label class="form-check-label" for="inlineRadio2">Return</label>
-        </div>
+        </div> -->
 
         <form method="post" @submit.prevent="store.onSearch">
             <div class="row g-1">
@@ -85,7 +85,10 @@ const form = useForm(store.form);
                         required
                     />
                 </div>
-                <div class="col-md-2 mb-3">
+                <div
+                    class="col-md-2 mb-3"
+                    v-if="store.form.trip_type == 'round'"
+                >
                     <VueDatePicker
                         v-model="store.form.return_date"
                         :enable-time-picker="false"
