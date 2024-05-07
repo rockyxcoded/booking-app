@@ -48,7 +48,7 @@ const selectFlight = (itinerary_data) => {
 };
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
     // console.log(props.queryParams);
 });
 </script>

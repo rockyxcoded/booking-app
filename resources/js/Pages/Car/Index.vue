@@ -44,7 +44,7 @@ const selectCar = (car) => {
 };
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
     console.log(props.cars);
 });
 </script>

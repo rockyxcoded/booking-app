@@ -39,7 +39,7 @@ const selectHotel = (hotel) => {
 };
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
 });
 </script>
 

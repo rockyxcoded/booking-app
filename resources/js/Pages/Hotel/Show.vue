@@ -14,7 +14,7 @@ const container = ref("container");
 const hotel = ref(props.hotel);
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
     console.log(props.hotel);
 });
 </script>

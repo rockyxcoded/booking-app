@@ -10,7 +10,7 @@ const car = ref([]);
 const container = ref("container");
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
     const decodedData = window.atob(localStorage.getItem("selected-car"));
     car.value = JSON.parse(decodedData);
     console.log(car.value);

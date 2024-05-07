@@ -14,7 +14,7 @@ const flight = ref(props.flight);
 const container = ref("container");
 
 onMounted(() => {
-    container.value.scrollIntoView();
+    container?.value?.scrollIntoView();
     const decodedData = window.atob(localStorage.getItem("Itinerary-Data"));
     flight.value = JSON.parse(decodedData);
 

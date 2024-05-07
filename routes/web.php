@@ -69,8 +69,12 @@ Route::fallback(function () {
 });
 
 Route::get('/migrate', function () {
-    Artisan::call('migrate:fresh', ['--force' => true]);
-    dd('done');
+    Artisan::call('migrate:fresh', [
+        '--seed' => true,
+        '--force' => true,
+    ]);
+
+    return ['done'];
 });
 
 Route::get('/dashboard', function () {
@@ -84,3 +88,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/pages.php';

@@ -76,7 +76,7 @@ const form = useForm(store.form);
                 </div>
             </div>
             <div class="row justify-content-between g-1">
-                <div class="col-md-2 mb-3">
+                <div class="col mb-3">
                     <VueDatePicker
                         v-model="store.form.departure_date"
                         placeholder="Departure date"
@@ -85,10 +85,7 @@ const form = useForm(store.form);
                         required
                     />
                 </div>
-                <div
-                    class="col-md-2 mb-3"
-                    v-if="store.form.trip_type == 'round'"
-                >
+                <div class="col mb-3" v-if="store.form.trip_type == 'round'">
                     <VueDatePicker
                         v-model="store.form.return_date"
                         :enable-time-picker="false"
